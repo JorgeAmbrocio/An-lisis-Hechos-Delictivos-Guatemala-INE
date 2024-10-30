@@ -1,0 +1,55 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+## Instalación de paquetes
+```{r}
+install.packages("arules")
+install.packages("readxl")
+```
+
+## Obtención de librería
+```{r}
+library(arules)
+library(readxl)
+```
+
+## Preparación de datos en excel
+En conjunto de datos 2022 se encontró para los campos año, día y otros campos numéricos cuando no se cuenta con la fecha, se llenan con el valor "Ingnorado" lo cual evita que los datos sean cargados a R, por ende se utiliza el método de reemplazar en dichas columnas para seguir el mismo patrón que en el archivo de datos 2020, colocando esos datos como el valor más grande con el mismo número de dígitos del campo, para año  se coloca como 9999, para día como 99.
+
+En edad de sindicado se reemplazan los valores Ignorado por "-1".
+En zona se reemplazan los valores Ignorado por 99.
+
+En archivo de datos 2023
+en columna Año del siniestro, se reemplazan los valores Ignorado por 9999.
+
+
+## Obtención de datos sindicados
+```{r}
+## no se encuentran datos del año 2021 en el portal
+
+data_2020 <- read_excel("Data\\MP Sindicados 2020.xlsx")
+data_2022 <- read_excel("Data\\MP Sindicados 2022.xlsx")
+data_2023 <- read_excel("Data\\MP Sindicados 2023.xlsx")
+
+```
+
+
+## Obtención de subsets
+```{r}
+
+```
+
+## Aplicar algoritmo apriori
+```{r}
+
+```
+
+
+## Exploración de las reglas
+```{r}
+
+```
+
