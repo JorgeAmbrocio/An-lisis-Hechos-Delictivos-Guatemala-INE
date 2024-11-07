@@ -1,0 +1,81 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Análisis de hechos delictivos
+```{r}
+library(dplyr) # Para manejar y manipular datos con %>%
+library(arules) # Para uso de algoritmos
+library(readxl) # Para lectura de archivo en formato excel
+```
+
+
+## Obtención de datos
+```{r}
+
+dAgraviados_2020 <- read_xlsx("Data\\Agraviados 2020.xlsx",sheet = "Sheet1")
+dAgraviados_2022 <- read_xlsx("Data\\Agraviados 2022.xlsx", sheet = "Sheet1")
+
+```
+
+## Obtención de diccionarios
+```{r}
+dicAgraviados22 <- read_xlsx("Data\\Diccionario 2022.xlsx", sheet="Dic")
+```
+
+
+## Funciones comunes para tratar datos
+```{r}
+# Función para eliminar columnas que tienen menos de dos valores en el dataset
+
+```
+
+
+## Algoritmo Apriori
+```{r}
+!(colnames(sdAgraviados20) %in% c("edad_agrav"))
+```
+
+
+### Agraviados 2020
+```{r}
+# Preparación del data set
+sdAgraviados20 <- dAgraviados_2020
+sdAgraviados20 <- sdAgraviados20[, !(colnames(sdAgraviados20) %in% c("año_denuncia"))]
+
+# Ejecución apriori en datos completos
+rAgraviados20 <- apriori(sdAgraviados20, parameter= list(support=0.2, confidence=0.5))
+
+```
+```{r}
+# Exploración de reglas
+inspect(rAgraviados20[0:100])
+```
+
+### Agraviados 2022
+```{r}
+# Preparación del data set
+sdAgraviados22 <- dAgraviados_2022
+sdAgraviados22 <- sdAgraviados22[, !(colnames(sdAgraviados22) %in% c("año_denuncia"))]
+
+sdAgraviados22 <- sdAgraviados22 %>%
+  left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com) %>%
+  rename(delito_com = Código)
+  
+# Ejecución apriori en datos completos
+rAgraviados22 <- apriori(sdAgraviados22, parameter= list(support=0.2, confidence=0.5))
+
+```
+### Exploración de reglas
+```{r}
+inspect(rAgraviados22[0:100])
+inspect(rAgraviados22[200:300])
+inspect(rAgraviados22[400:500])
+inspect(rAgraviados22[600:700])
+inspect(rAgraviados22[1000:1100])
+
+muestra <- as(rAgraviados22,"data.frame")
+```
+
