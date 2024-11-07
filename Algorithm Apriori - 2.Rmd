@@ -60,22 +60,23 @@ sdAgraviados22 <- dAgraviados_2022
 sdAgraviados22 <- sdAgraviados22[, !(colnames(sdAgraviados22) %in% c("año_denuncia"))]
 
 sdAgraviados22 <- sdAgraviados22 %>%
+  select(-g_edad_60ymás, -g_edad_80ymás) %>%
   left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
-  select(-delito_com) %>%
-  rename(delito_com = Código)
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  left_join(dicAgraviados22[dicAgraviados22$Valor == "DEPARTAMENTO DE OCURRENCIA",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  mutate(depto_ocu_hecho = ifelse(depto_ocu_hecho == 2202, 2, depto_ocu_hecho))
   
 # Ejecución apriori en datos completos
 rAgraviados22 <- apriori(sdAgraviados22, parameter= list(support=0.2, confidence=0.5))
 
+muestra <- as(rAgraviados22,"data.frame")
 ```
+
 ### Exploración de reglas
 ```{r}
-inspect(rAgraviados22[0:100])
-inspect(rAgraviados22[200:300])
-inspect(rAgraviados22[400:500])
-inspect(rAgraviados22[600:700])
-inspect(rAgraviados22[1000:1100])
-
 muestra <- as(rAgraviados22,"data.frame")
 ```
 
