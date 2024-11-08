@@ -1,0 +1,29 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Análisis de hechos delictivos
+```{r}
+library(dplyr) # Para manejar y manipular datos con %>%
+library(arules) # Para uso de algoritmos
+library(readxl) # Para lectura de archivo en formato excel
+```
+
+## Obtención de datos
+```{r}
+
+dAgraviados_2020 <- read_xlsx("Data\\Agraviados 2020.xlsx",sheet = "Sheet1")
+dAgraviados_2022 <- read_xlsx("Data\\Agraviados 2022.xlsx", sheet = "Sheet1")
+dAgraviados_2023 <- read_xlsx("Data\\Agraviados 2023.xlsx", sheet = "Sheet1")
+
+dSindicados_2023 <- read_xlsx("Data\\Sindicados 2023.xlsx", sheet = "Sheet1")
+
+
+```
+
+## Obtención de diccionarios
+```{r}
+dicAgraviados22 <- read_xlsx("Data\\Diccionario 2022.xlsx", sheet="Dic")
+dicAgraviados23 <- read_xlsx("Data\\Diccionario Agraviados 2023.xlsx", sheet="Dic")
+```

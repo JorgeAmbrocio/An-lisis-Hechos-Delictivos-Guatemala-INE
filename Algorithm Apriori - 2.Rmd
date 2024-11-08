@@ -16,27 +16,20 @@ library(readxl) # Para lectura de archivo en formato excel
 
 dAgraviados_2020 <- read_xlsx("Data\\Agraviados 2020.xlsx",sheet = "Sheet1")
 dAgraviados_2022 <- read_xlsx("Data\\Agraviados 2022.xlsx", sheet = "Sheet1")
+dAgraviados_2023 <- read_xlsx("Data\\Agraviados 2023.xlsx", sheet = "Sheet1")
+
+dSindicados_2023 <- read_xlsx("Data\\Sindicados 2023.xlsx", sheet = "Sheet1")
+
 
 ```
 
 ## Obtención de diccionarios
 ```{r}
 dicAgraviados22 <- read_xlsx("Data\\Diccionario 2022.xlsx", sheet="Dic")
+dicAgraviados23 <- read_xlsx("Data\\Diccionario Agraviados 2023.xlsx", sheet="Dic")
 ```
-
-
-## Funciones comunes para tratar datos
-```{r}
-# Función para eliminar columnas que tienen menos de dos valores en el dataset
-
-```
-
 
 ## Algoritmo Apriori
-```{r}
-!(colnames(sdAgraviados20) %in% c("edad_agrav"))
-```
-
 
 ### Agraviados 2020
 ```{r}
@@ -77,6 +70,67 @@ muestra <- as(rAgraviados22,"data.frame")
 
 ### Exploración de reglas
 ```{r}
+#117	{delito_com=[57,227)} => 
+#{sexo_agraviados=Hombre}	0.2125382	0.5696120	0.3731281	1.210362
+# Tomando esta regla como punto de partida, se revisan los casos que aplican para este análisis y posteriomente se realia un análisis sobre estos.
+
+# Preparación del data set
+sdAgraviados22 <- dAgraviados_2022
+sdAgraviados22 <- sdAgraviados22[, !(colnames(sdAgraviados22) %in% c("año_denuncia"))]
+
+sdAgraviados22 <- sdAgraviados22 %>%
+  select(-g_edad_60ymás, -g_edad_80ymás) %>%
+  left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  filter(delito_com>=178 & delito_com<=182)  %>%
+  left_join(dicAgraviados22[dicAgraviados22$Valor == "DEPARTAMENTO DE OCURRENCIA",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  mutate(depto_ocu_hecho = ifelse(depto_ocu_hecho == 2202, 2, depto_ocu_hecho)) %>%
+  left_join(dicAgraviados22, by=c("sexo_agraviados" = "Etiqueta")) %>%
+  select(-sexo_agraviados, -Valor) %>%
+  rename(sexo_agraviados= Código) %>%
+  left_join(dicAgraviados22, by=c("est_conyugal" = "Etiqueta")) %>%
+  select(-est_conyugal, -Valor) %>%
+  rename(est_conyugal= Código)
+  
+  
+# Ejecución apriori en datos completos
+rAgraviados22 <- apriori(sdAgraviados22, parameter= list(support=0.2, confidence=0.5))
+
 muestra <- as(rAgraviados22,"data.frame")
+
+
+```
+
+### Agraviados 2023
+```{r}
+# Preparación del data set
+sdAgraviados23 <- dAgraviados_2023
+sdAgraviados23 <- sdAgraviados23[, !(colnames(sdAgraviados23) %in% c("año_denuncia"))]
+
+sdAgraviados22 <- sdAgraviados22 %>%
+  select(-g_edad_60ymás, -g_edad_80ymás) %>%
+  left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  filter(delito_com>=178 & delito_com<=182)  %>%
+  left_join(dicAgraviados22[dicAgraviados22$Valor == "DEPARTAMENTO DE OCURRENCIA",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  mutate(depto_ocu_hecho = ifelse(depto_ocu_hecho == 2202, 2, depto_ocu_hecho)) %>%
+  left_join(dicAgraviados22, by=c("sexo_agraviados" = "Etiqueta")) %>%
+  select(-sexo_agraviados, -Valor) %>%
+  rename(sexo_agraviados= Código) %>%
+  left_join(dicAgraviados22, by=c("est_conyugal" = "Etiqueta")) %>%
+  select(-est_conyugal, -Valor) %>%
+  rename(est_conyugal= Código)
+  
+  
+# Ejecución apriori en datos completos
+rAgraviados23 <- apriori(sdAgraviados23, parameter= list(support=0.2, confidence=0.5))
+
+muestra23 <- as(rAgraviados23,"data.frame")
 ```
 
