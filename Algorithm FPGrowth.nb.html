@@ -1767,14 +1767,10 @@ library(readxl) # Para lectura de archivo en formato excel</code></pre>
 <h2>Obtención de datos</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kQWdyYXZpYWRvc18yMDIwIDwtIHJlYWRfeGxzeChcIkRhdGFcXFxcQWdyYXZpYWRvcyAyMDIwLnhsc3hcIixzaGVldCA9IFwiU2hlZXQxXCIpXG5kQWdyYXZpYWRvc18yMDIyIDwtIHJlYWRfeGxzeChcIkRhdGFcXFxcQWdyYXZpYWRvcyAyMDIyLnhsc3hcIiwgc2hlZXQgPSBcIlNoZWV0MVwiKVxuZEFncmF2aWFkb3NfMjAyMyA8LSByZWFkX3hsc3goXCJEYXRhXFxcXEFncmF2aWFkb3MgMjAyMy54bHN4XCIsIHNoZWV0ID0gXCJTaGVldDFcIilcblxuZFNpbmRpY2Fkb3NfMjAyMyA8LSByZWFkX3hsc3goXCJEYXRhXFxcXFNpbmRpY2Fkb3MgMjAyMy54bHN4XCIsIHNoZWV0ID0gXCJTaGVldDFcIilcblxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kQWdyYXZpYWRvc18yMDIwIDwtIHJlYWRfeGxzeChcIkRhdGFcXFxcQWdyYXZpYWRvcyAyMDIwLnhsc3hcIixzaGVldCA9IFwiU2hlZXQxXCIpXG5kQWdyYXZpYWRvc18yMDIyIDwtIHJlYWRfeGxzeChcIkRhdGFcXFxcQWdyYXZpYWRvcyAyMDIyLnhsc3hcIiwgc2hlZXQgPSBcIlNoZWV0MVwiKVxuYGBgIn0= -->
 <pre class="r"><code>
 dAgraviados_2020 &lt;- read_xlsx(&quot;Data\\Agraviados 2020.xlsx&quot;,sheet = &quot;Sheet1&quot;)
-dAgraviados_2022 &lt;- read_xlsx(&quot;Data\\Agraviados 2022.xlsx&quot;, sheet = &quot;Sheet1&quot;)
-dAgraviados_2023 &lt;- read_xlsx(&quot;Data\\Agraviados 2023.xlsx&quot;, sheet = &quot;Sheet1&quot;)
-
-dSindicados_2023 &lt;- read_xlsx(&quot;Data\\Sindicados 2023.xlsx&quot;, sheet = &quot;Sheet1&quot;)
-</code></pre>
+dAgraviados_2022 &lt;- read_xlsx(&quot;Data\\Agraviados 2022.xlsx&quot;, sheet = &quot;Sheet1&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1783,15 +1779,174 @@ dSindicados_2023 &lt;- read_xlsx(&quot;Data\\Sindicados 2023.xlsx&quot;, sheet =
 <h2>Obtención de diccionarios</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGljQWdyYXZpYWRvczIyIDwtIHJlYWRfeGxzeChcIkRhdGFcXFxcRGljY2lvbmFyaW8gMjAyMi54bHN4XCIsIHNoZWV0PVwiRGljXCIpXG5kaWNBZ3JhdmlhZG9zMjMgPC0gcmVhZF94bHN4KFwiRGF0YVxcXFxEaWNjaW9uYXJpbyBBZ3JhdmlhZG9zIDIwMjMueGxzeFwiLCBzaGVldD1cIkRpY1wiKVxuYGBgIn0= -->
-<pre class="r"><code>dicAgraviados22 &lt;- read_xlsx(&quot;Data\\Diccionario 2022.xlsx&quot;, sheet=&quot;Dic&quot;)
-dicAgraviados23 &lt;- read_xlsx(&quot;Data\\Diccionario Agraviados 2023.xlsx&quot;, sheet=&quot;Dic&quot;)</code></pre>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="algoritmo-fpgrowth" class="section level2">
+<h2>Algoritmo FPGrowth</h2>
+<div id="agraviados-2023" class="section level3">
+<h3>Agraviados 2023</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBc2lnbmFjacOzbiBpbmljaWFsIGRlbCBjb25qdW50byBkZSBkYXRvc1xuc2RBZ3JhdmlhZG9zMjMgPC0gZEFncmF2aWFkb3NfMjAyM1xuXG4jIE1hbmlwdWxhY2nDs24gZGVsIGNvbmp1bnRvIHBhcmEgZGVsaW1pdGFyIFxuc2RBZ3JhdmlhZG9zMjMgPC0gc2RBZ3JhdmlhZG9zMjMgJT4lXG4gIHNlbGVjdCgtYcOxb19kZW51bmNpYSwtZ19lZGFkXzYweW3DoXMsIC1nX2VkYWRfODB5bcOhcykgJT4lXG4gIGxlZnRfam9pbihkaWNBZ3JhdmlhZG9zMjIsIGJ5ID0gYyhcImRlbGl0b19jb21cIj1cIkV0aXF1ZXRhXCIpKSAlPiVcbiAgc2VsZWN0KC1kZWxpdG9fY29tLCAtVmFsb3IpICU+JVxuICByZW5hbWUoZGVsaXRvX2NvbSA9IEPDs2RpZ28pICU+JVxuICBsZWZ0X2pvaW4oZGljQWdyYXZpYWRvczIzW2RpY0FncmF2aWFkb3MyMyRWYWxvciA9PSBcIkRFUEFSVEFNRU5UTyBERSBPQ1VSUkVOQ0lBIERFTCBIRUNIT1wiLF0sIGJ5ID0gYyhcImRlcHRvX29jdV9oZWNob1wiID1cIkV0aXF1ZXRhXCIpKSAlPiVcbiAgc2VsZWN0KC1kZXB0b19vY3VfaGVjaG8sIC1WYWxvcikgJT4lXG4gIHJlbmFtZShkZXB0b19vY3VfaGVjaG8gPSBDw7NkaWdvKSAlPiVcbiAgZmlsdGVyKHpvbmFfb2N1X2hlY2hvIT0tOTkpICU+JVxuICBzZWxlY3QoLWRlcHRvX29jdV9oZWNobywtbXVwaW9fb2N1X2hlY2hvKVxuYGBgIn0= -->
+<pre class="r"><code># Asignación inicial del conjunto de datos
+sdAgraviados23 &lt;- dAgraviados_2023
+
+# Manipulación del conjunto para delimitar 
+sdAgraviados23 &lt;- sdAgraviados23 %&gt;%
+  select(-año_denuncia,-g_edad_60ymás, -g_edad_80ymás) %&gt;%
+  left_join(dicAgraviados22, by = c(&quot;delito_com&quot;=&quot;Etiqueta&quot;)) %&gt;%
+  select(-delito_com, -Valor) %&gt;%
+  rename(delito_com = Código) %&gt;%
+  left_join(dicAgraviados23[dicAgraviados23$Valor == &quot;DEPARTAMENTO DE OCURRENCIA DEL HECHO&quot;,], by = c(&quot;depto_ocu_hecho&quot; =&quot;Etiqueta&quot;)) %&gt;%
+  select(-depto_ocu_hecho, -Valor) %&gt;%
+  rename(depto_ocu_hecho = Código) %&gt;%
+  filter(zona_ocu_hecho!=-99) %&gt;%
+  select(-depto_ocu_hecho,-mupio_ocu_hecho)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXZpc286IERldGVjdGVkIGFuIHVuZXhwZWN0ZWQgbWFueS10by1tYW55IHJlbGF0aW9uc2hpcCBiZXR3ZWVuIGB4YCBhbmQgYHlgLlxuIn0= -->
+<pre><code>Aviso: Detected an unexpected many-to-many relationship between `x` and `y`.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFamVjdWNpw7NuIGRlbCBhbGdvcml0bW8gZnBncm93dGhcbnJBZ3JhdmlhZG9zMjMgPC0gZmltNHIoc2RBZ3JhdmlhZG9zMjMsIG1ldGhvZCA9IFwiZnBncm93dGhcIiwgdGFyZ2V0ID0gXCJydWxlc1wiLCBzdXBwPTAuMiwgY29uZj0wLjUpXG5gYGAifQ== -->
+<pre class="r"><code># Ejecución del algoritmo fpgrowth
+rAgraviados23 &lt;- fim4r(sdAgraviados23, method = &quot;fpgrowth&quot;, target = &quot;rules&quot;, supp=0.2, conf=0.5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXZpc286IENvbHVtbihzKSAxLCAyLCAzLCA0LCA1LCA2LCA3LCA4LCA5LCAxMCwgMTEsIDEyLCAxMywgMTQsIDE1LCAxNiwgMTcsIDE4IG5vdCBsb2dpY2FsIG9yIGZhY3Rvci4gQXBwbHlpbmcgZGVmYXVsdCBkaXNjcmV0aXphdGlvbiAoc2VlICc/IGRpc2NyZXRpemVERicpLkF2aXNvOiBUaGUgY2FsY3VsYXRlZCBicmVha3MgYXJlOiAtOTksIDIwMjMsIDIwMjMsIDIwMjNcbiAgT25seSB1bmlxdWUgYnJlYWtzIGFyZSB1c2VkIHJlZHVjaW5nIHRoZSBudW1iZXIgb2YgaW50ZXJ2YWxzLiBMb29rIGF0ID8gZGlzY3JldGl6ZSBmb3IgZGV0YWlscy5BdmlzbzogVGhlIGNhbGN1bGF0ZWQgYnJlYWtzIGFyZTogLTk5LCAtOTksIDI4LCA5OFxuICBPbmx5IHVuaXF1ZSBicmVha3MgYXJlIHVzZWQgcmVkdWNpbmcgdGhlIG51bWJlciBvZiBpbnRlcnZhbHMuIExvb2sgYXQgPyBkaXNjcmV0aXplIGZvciBkZXRhaWxzLlxuIn0= -->
+<pre><code>Aviso: Column(s) 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 not logical or factor. Applying default discretization (see &#39;? discretizeDF&#39;).Aviso: The calculated breaks are: -99, 2023, 2023, 2023
+  Only unique breaks are used reducing the number of intervals. Look at ? discretize for details.Aviso: The calculated breaks are: -99, -99, 28, 98
+  Only unique breaks are used reducing the number of intervals. Look at ? discretize for details.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZmltNHIuZnBncm93dGggXG5cblBhcmFtZXRlciBzcGVjaWZpY2F0aW9uOlxuIn0= -->
+<pre><code>fim4r.fpgrowth 
+
+Parameter specification:</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6NCwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbMSDDlyA0XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJtMVF3VXJFTUJDZHRtbGxBNjZDMzlFZTFJTkhEeUo0RllXOXhqUmJpekVKU2FwKy9lcWs3U3hMc0JENjNzdThtY3g3ZnRqZDhCMEhnQW9ZSzZDcUVVTDkrdkxZM2dHd0Vra0JERGJwLzRORlZ3Z1lubTBTN20rQnZvVS9IZm5saWJIMmsxWWhFNnNnZFRhZ051THpXTWRXa1lYSk9jTFNtdjJLbXlqOG9DSXhyNXoxTVd1NDhmYTdPMjFLRjVCUGxscUV2SWozSW9wdTc5R1A3SkJaenF5TG96Vm9LbE1tVFdZdWZDWmNUQ2E5cEcvbCsyUSsydXM4RG1lR05IT1dsblArRDJiTEs4cmYxZDdRL3NvTW8xRzBqaFp2U2xQblhuMnRjSXQ1ekhGMHpvK0dzdU9vaGk3YUtNakNwZFdrekp2RDRRLzZ1Ly9FS0FJQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["supp"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["conf"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["target"],"name":[3],"type":["chr"],"align":["left"]},{"label":["report"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"20","2":"50","3":"rules","4":"scl","_rn_":""}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5EYXRhIHNpemU6IDg3NTkxIHRyYW5zYWN0aW9ucyBhbmQgMTA1IGl0ZW1zIFxuUmVzdWx0OiAyODIgcnVsZXNcbiJ9 -->
+<pre><code>
+Data size: 87591 transactions and 105 items 
+Result: 282 rules</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuckFncmF2aWFkb3MyMyA8LSBhcyhyQWdyYXZpYWRvczIzLCBcImRhdGEuZnJhbWVcIilcbmBgYCJ9 -->
+<pre class="r"><code>rAgraviados23 &lt;- as(rAgraviados23, &quot;data.frame&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="agraviados-2023-1" class="section level3">
+<h3>Agraviados 2023</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBc2lnbmFjacOzbiBpbmljaWFsIGRlbCBjb25qdW50byBkZSBkYXRvc1xuc2RBZ3JhdmlhZG9zMjMgPC0gZEFncmF2aWFkb3NfMjAyM1xuXG4jIE1hbmlwdWxhY2nDs24gZGVsIGNvbmp1bnRvIHBhcmEgZGVsaW1pdGFyIFxuc2RBZ3JhdmlhZG9zMjMgPC0gc2RBZ3JhdmlhZG9zMjMgJT4lXG4gIHNlbGVjdCgtYcOxb19kZW51bmNpYSwtZ19lZGFkXzYweW3DoXMsIC1nX2VkYWRfODB5bcOhcykgJT4lXG4gIGxlZnRfam9pbihkaWNBZ3JhdmlhZG9zMjIsIGJ5ID0gYyhcImRlbGl0b19jb21cIj1cIkV0aXF1ZXRhXCIpKSAlPiVcbiAgc2VsZWN0KC1kZWxpdG9fY29tLCAtVmFsb3IpICU+JVxuICByZW5hbWUoZGVsaXRvX2NvbSA9IEPDs2RpZ28pICU+JVxuICBmaWx0ZXIoc2V4b19hZ3JhdmlhZG9zID09IFwiTXVqZXJcIikgJT4lXG4gIHNlbGVjdCgtc2V4b19hZ3JhdmlhZG9zKSAlPiVcbiAgZmlsdGVyKGRlbGl0b19jb20+PSA1KSAlPiVcbiAgZmlsdGVyKGRlbGl0b19jb208PTkpICU+JVxuICBmaWx0ZXIoZWRhZF9hZ3JhdiAhPSAtOTkpXG5cbiMgRWplY3VjacOzbiBkZWwgYWxnb3JpdG1vIGZwZ3Jvd3RoXG5yQWdyYXZpYWRvczIzIDwtIGZpbTRyKHNkQWdyYXZpYWRvczIzLCBtZXRob2QgPSBcImZwZ3Jvd3RoXCIsIHRhcmdldCA9IFwicnVsZXNcIiwgc3VwcD0wLjIsIGNvbmY9MC41KVxuYGBgIn0= -->
+<pre class="r"><code># Asignación inicial del conjunto de datos
+sdAgraviados23 &lt;- dAgraviados_2023
+
+# Manipulación del conjunto para delimitar 
+sdAgraviados23 &lt;- sdAgraviados23 %&gt;%
+  select(-año_denuncia,-g_edad_60ymás, -g_edad_80ymás) %&gt;%
+  left_join(dicAgraviados22, by = c(&quot;delito_com&quot;=&quot;Etiqueta&quot;)) %&gt;%
+  select(-delito_com, -Valor) %&gt;%
+  rename(delito_com = Código) %&gt;%
+  filter(sexo_agraviados == &quot;Mujer&quot;) %&gt;%
+  select(-sexo_agraviados) %&gt;%
+  filter(delito_com&gt;= 5) %&gt;%
+  filter(delito_com&lt;=9) %&gt;%
+  filter(edad_agrav != -99)
+
+# Ejecución del algoritmo fpgrowth
+rAgraviados23 &lt;- fim4r(sdAgraviados23, method = &quot;fpgrowth&quot;, target = &quot;rules&quot;, supp=0.2, conf=0.5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXZpc286IENvbHVtbihzKSAxLCAyLCAzLCA0LCA1LCA2LCA3LCA4LCA5LCAxMCwgMTEsIDEyLCAxMywgMTQsIDE1LCAxNiwgMTcsIDE4LCAxOSBub3QgbG9naWNhbCBvciBmYWN0b3IuIEFwcGx5aW5nIGRlZmF1bHQgZGlzY3JldGl6YXRpb24gKHNlZSAnPyBkaXNjcmV0aXplREYnKS5BdmlzbzogVGhlIGNhbGN1bGF0ZWQgYnJlYWtzIGFyZTogMjAyMiwgMjAyMywgMjAyMywgMjAyM1xuICBPbmx5IHVuaXF1ZSBicmVha3MgYXJlIHVzZWQgcmVkdWNpbmcgdGhlIG51bWJlciBvZiBpbnRlcnZhbHMuIExvb2sgYXQgPyBkaXNjcmV0aXplIGZvciBkZXRhaWxzLkF2aXNvOiBUaGUgY2FsY3VsYXRlZCBicmVha3MgYXJlOiAtOTksIC05OSwgLTk5LCA3XG4gIE9ubHkgdW5pcXVlIGJyZWFrcyBhcmUgdXNlZCByZWR1Y2luZyB0aGUgbnVtYmVyIG9mIGludGVydmFscy4gTG9vayBhdCA/IGRpc2NyZXRpemUgZm9yIGRldGFpbHMuXG4ifQ== -->
+<pre><code>Aviso: Column(s) 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 not logical or factor. Applying default discretization (see &#39;? discretizeDF&#39;).Aviso: The calculated breaks are: 2022, 2023, 2023, 2023
+  Only unique breaks are used reducing the number of intervals. Look at ? discretize for details.Aviso: The calculated breaks are: -99, -99, -99, 7
+  Only unique breaks are used reducing the number of intervals. Look at ? discretize for details.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZmltNHIuZnBncm93dGggXG5cblBhcmFtZXRlciBzcGVjaWZpY2F0aW9uOlxuIn0= -->
+<pre><code>fim4r.fpgrowth 
+
+Parameter specification:</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6NCwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbMSDDlyA0XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJtMVF3VXJFTUJDZHRtbGxBNjZDMzlHQzZNR2pCeEc4aXNKZVk1cXR4WmlFSkZXL2ZuWFNkcFlsV0FoOTcyWGVUT1k5UCt4dStJNERRQVdNRlZEVkNLRitmWGxzN3dCWWlhUUFCcHYwLzhHaUt3UU16ellKOTdkQTM4S2Zqdnp5eEZqN1NhdVFpVldRT2h0UUcvRjVyR09yeU1Ma0hHRnB6WDdGVFJSK1VKR1lWODc2bURYY2VQdmRuVGFsQzhnblN5MUNYc1I3RVVXMzkraEhkc2dzWjliRjBSbzBsU21USmpNWFBoTXVKcE5lMHJmeWZUSWY3WFVlaHpORG1qbEx5em4vQjdQbEZlWHZhbTlvZjJXRzBTaGFSNHMzcGFsenI3NVd1TVU4NWpnNjUwZEQyWEZVUXhkdEZHVGgwbXBTNXMzaDhBY2RhOU1xS0FJQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["supp"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["conf"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["target"],"name":[3],"type":["chr"],"align":["left"]},{"label":["report"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"20","2":"50","3":"rules","4":"scl","_rn_":""}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5EYXRhIHNpemU6IDQxIHRyYW5zYWN0aW9ucyBhbmQgMTE0IGl0ZW1zIFxuUmVzdWx0OiAxMzQwIHJ1bGVzXG4ifQ== -->
+<pre><code>
+Data size: 41 transactions and 114 items 
+Result: 1340 rules</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuckFncmF2aWFkb3MyMyA8LSBhcyhyQWdyYXZpYWRvczIzLCBcImRhdGEuZnJhbWVcIilcbmBgYCJ9 -->
+<pre class="r"><code>rAgraviados23 &lt;- as(rAgraviados23, &quot;data.frame&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="sindicados-2023" class="section level3">
+<h3>Sindicados 2023</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBc2lnbmFjacOzbiBpbmljaWFsIGRlbCBjb25qdW50byBkZSBkYXRvc1xuc2RTaW5kaWNhZG9zMjMgPC0gZFNpbmRpY2Fkb3NfMjAyM1xuXG4jIE1hbmlwdWxhY2nCtG4gZGVsIGNvbmp1bnRvIGRlIGRhdG9zIHBhcmEgaGFjZXIgbcOhcyBlc3BlY8OtZmljbyBlbCByZXN1bHRhZG9cbiMgTWFuaXB1bGFjacOzbiBkZWwgY29uanVudG8gcGFyYSBkZWxpbWl0YXIgXG5zZFNpbmRpY2Fkb3MyMyA8LSBzZFNpbmRpY2Fkb3MyMyAlPiVcbiAgc2VsZWN0KC1hw7FvX2RlbnVuY2lhLCAtem9uYV9vY3VfaGVjaG8sIC1hw7FvX2hlY2hvKSAlPiVcbiAgbGVmdF9qb2luKGRpY1NpbmRpY2Fkb3MyM1tkaWNTaW5kaWNhZG9zMjMkVmFsb3IgPT0gXCJERVBBUlRBTUVOVE8gREUgT0NVUlJFTkNJQSBERUwgSEVDSE9cIixdLCBieSA9IGMoXCJkZXB0b19vY3VfaGVjaG9cIiA9XCJFdGlxdWV0YVwiKSkgJT4lXG4gIHNlbGVjdCgtZGVwdG9fb2N1X2hlY2hvLCAtVmFsb3IpICU+JVxuICByZW5hbWUoZGVwdG9fb2N1X2hlY2hvID0gQ8OzZGlnbykgXG5gYGAifQ== -->
+<pre class="r"><code># Asignación inicial del conjunto de datos
+sdSindicados23 &lt;- dSindicados_2023
+
+# Manipulaci´n del conjunto de datos para hacer más específico el resultado
+# Manipulación del conjunto para delimitar 
+sdSindicados23 &lt;- sdSindicados23 %&gt;%
+  select(-año_denuncia, -zona_ocu_hecho, -año_hecho) %&gt;%
+  left_join(dicSindicados23[dicSindicados23$Valor == &quot;DEPARTAMENTO DE OCURRENCIA DEL HECHO&quot;,], by = c(&quot;depto_ocu_hecho&quot; =&quot;Etiqueta&quot;)) %&gt;%
+  select(-depto_ocu_hecho, -Valor) %&gt;%
+  rename(depto_ocu_hecho = Código) </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXZpc286IERldGVjdGVkIGFuIHVuZXhwZWN0ZWQgbWFueS10by1tYW55IHJlbGF0aW9uc2hpcCBiZXR3ZWVuIGB4YCBhbmQgYHlgLlxuIn0= -->
+<pre><code>Aviso: Detected an unexpected many-to-many relationship between `x` and `y`.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFamVjdWNpw7NuIGRlbCBhbGdvcml0bW8gZnBncm93dGhcbnJTaW5kaWNhZG9zMjMgPC0gZmltNHIoc2RTaW5kaWNhZG9zMjMsIG1ldGhvZCA9IFwiZnBncm93dGhcIiwgdGFyZ2V0ID0gXCJydWxlc1wiLCBzdXBwPTAuMiwgY29uZj0wLjUpXG5gYGAifQ== -->
+<pre class="r"><code># Ejecución del algoritmo fpgrowth
+rSindicados23 &lt;- fim4r(sdSindicados23, method = &quot;fpgrowth&quot;, target = &quot;rules&quot;, supp=0.2, conf=0.5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXZpc286IENvbHVtbihzKSAxLCAyLCAzLCA0LCA1LCA2LCA3LCA4LCA5LCAxMCwgMTEsIDEyLCAxMywgMTQsIDE1LCAxNiwgMTcsIDE4LCAxOSwgMjAgbm90IGxvZ2ljYWwgb3IgZmFjdG9yLiBBcHBseWluZyBkZWZhdWx0IGRpc2NyZXRpemF0aW9uIChzZWUgJz8gZGlzY3JldGl6ZURGJykuQXZpc286IFRoZSBjYWxjdWxhdGVkIGJyZWFrcyBhcmU6IC05OSwgLTk5LCAtOTksIDEwMFxuICBPbmx5IHVuaXF1ZSBicmVha3MgYXJlIHVzZWQgcmVkdWNpbmcgdGhlIG51bWJlciBvZiBpbnRlcnZhbHMuIExvb2sgYXQgPyBkaXNjcmV0aXplIGZvciBkZXRhaWxzLkF2aXNvOiBUaGUgY2FsY3VsYXRlZCBicmVha3MgYXJlOiAxLCAxLCAxMiwgMjNcbiAgT25seSB1bmlxdWUgYnJlYWtzIGFyZSB1c2VkIHJlZHVjaW5nIHRoZSBudW1iZXIgb2YgaW50ZXJ2YWxzLiBMb29rIGF0ID8gZGlzY3JldGl6ZSBmb3IgZGV0YWlscy5cbiJ9 -->
+<pre><code>Aviso: Column(s) 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 not logical or factor. Applying default discretization (see &#39;? discretizeDF&#39;).Aviso: The calculated breaks are: -99, -99, -99, 100
+  Only unique breaks are used reducing the number of intervals. Look at ? discretize for details.Aviso: The calculated breaks are: 1, 1, 12, 23
+  Only unique breaks are used reducing the number of intervals. Look at ? discretize for details.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZmltNHIuZnBncm93dGggXG5cblBhcmFtZXRlciBzcGVjaWZpY2F0aW9uOlxuIn0= -->
+<pre><code>fim4r.fpgrowth 
+
+Parameter specification:</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6NCwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbMSDDlyA0XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJtMVF3VXJFTUJDZHRtbGxBNjZDMzlHQzZNR2pCeEc4aXNKZVk1cXR4WmlFSkZXL2ZuWFNkcFlsV0FoOTcyWGVUT1k5UCt4dStJNERRQVdNRlZEVkNLRitmWGxzN3dCWWlhUUFCcHYwLzhHaUt3UU16ellKOTdkQTM4S2Zqdnp5eEZqN1NhdVFpVldRT2h0UUcvRjVyR09yeU1Ma0hHRnB6WDdGVFJSK1VKR1lWODc2bURYY2VQdmRuVGFsQzhnblN5MUNYc1I3RVVXMzkraEhkc2dzWjliRjBSbzBsU21USmpNWFBoTXVKcE5lMHJmeWZUSWY3WFVlaHpORG1qbEx5em4vQjdQbEZlWHZhbTlvZjJXRzBTaGFSNHMzcGFsenI3NVd1TVU4NWpnNjUwZEQyWEZVUXhkdEZHVGgwbXBTNXMzaDhBY2RhOU1xS0FJQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["supp"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["conf"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["target"],"name":[3],"type":["chr"],"align":["left"]},{"label":["report"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"20","2":"50","3":"rules","4":"scl","_rn_":""}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5EYXRhIHNpemU6IDM3MzEwNCB0cmFuc2FjdGlvbnMgYW5kIDgwOCBpdGVtcyBcblJlc3VsdDogMzE1NCBydWxlc1xuIn0= -->
+<pre><code>
+Data size: 373104 transactions and 808 items 
+Result: 3154 rules</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuclNpbmRpY2Fkb3MyMyA8LSBhcyhyU2luZGljYWRvczIzLCBcImRhdGEuZnJhbWVcIilcblxuYGBgIn0= -->
+<pre class="r"><code>rSindicados23 &lt;- as(rSindicados23, &quot;data.frame&quot;)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+</div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIEFuw6FsaXNpcyBkZSBoZWNob3MgZGVsaWN0aXZvcw0KYGBge3J9DQpsaWJyYXJ5KGRwbHlyKSAjIFBhcmEgbWFuZWphciB5IG1hbmlwdWxhciBkYXRvcyBjb24gJT4lDQpsaWJyYXJ5KGFydWxlcykgIyBQYXJhIHVzbyBkZSBhbGdvcml0bW9zDQpsaWJyYXJ5KHJlYWR4bCkgIyBQYXJhIGxlY3R1cmEgZGUgYXJjaGl2byBlbiBmb3JtYXRvIGV4Y2VsDQpgYGANCg0KIyMgT2J0ZW5jacOzbiBkZSBkYXRvcw0KYGBge3J9DQoNCmRBZ3JhdmlhZG9zXzIwMjAgPC0gcmVhZF94bHN4KCJEYXRhXFxBZ3JhdmlhZG9zIDIwMjAueGxzeCIsc2hlZXQgPSAiU2hlZXQxIikNCmRBZ3JhdmlhZG9zXzIwMjIgPC0gcmVhZF94bHN4KCJEYXRhXFxBZ3JhdmlhZG9zIDIwMjIueGxzeCIsIHNoZWV0ID0gIlNoZWV0MSIpDQpkQWdyYXZpYWRvc18yMDIzIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIzLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KDQpkU2luZGljYWRvc18yMDIzIDwtIHJlYWRfeGxzeCgiRGF0YVxcU2luZGljYWRvcyAyMDIzLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KDQoNCmBgYA0KDQojIyBPYnRlbmNpw7NuIGRlIGRpY2Npb25hcmlvcw0KYGBge3J9DQpkaWNBZ3JhdmlhZG9zMjIgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyAyMDIyLnhsc3giLCBzaGVldD0iRGljIikNCmRpY0FncmF2aWFkb3MyMyA8LSByZWFkX3hsc3goIkRhdGFcXERpY2Npb25hcmlvIEFncmF2aWFkb3MgMjAyMy54bHN4Iiwgc2hlZXQ9IkRpYyIpDQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIEFuw6FsaXNpcyBkZSBoZWNob3MgZGVsaWN0aXZvcw0KYGBge3J9DQpsaWJyYXJ5KGRwbHlyKSAjIFBhcmEgbWFuZWphciB5IG1hbmlwdWxhciBkYXRvcyBjb24gJT4lDQpsaWJyYXJ5KGFydWxlcykgIyBQYXJhIHVzbyBkZSBhbGdvcml0bW9zDQpsaWJyYXJ5KHJlYWR4bCkgIyBQYXJhIGxlY3R1cmEgZGUgYXJjaGl2byBlbiBmb3JtYXRvIGV4Y2VsDQpgYGANCg0KIyMgT2J0ZW5jacOzbiBkZSBkYXRvcw0KYGBge3J9DQoNCmRBZ3JhdmlhZG9zXzIwMjAgPC0gcmVhZF94bHN4KCJEYXRhXFxBZ3JhdmlhZG9zIDIwMjAueGxzeCIsc2hlZXQgPSAiU2hlZXQxIikNCmRBZ3JhdmlhZG9zXzIwMjIgPC0gcmVhZF94bHN4KCJEYXRhXFxBZ3JhdmlhZG9zIDIwMjIueGxzeCIsIHNoZWV0ID0gIlNoZWV0MSIpDQoNCmRBZ3JhdmlhZG9zXzIwMjMgPC0gcmVhZF94bHN4KCJEYXRhXFxBZ3JhdmlhZG9zIDIwMjMueGxzeCIsIHNoZWV0ID0gIlNoZWV0MSIpDQpkU2luZGljYWRvc18yMDIzIDwtIHJlYWRfeGxzeCgiRGF0YVxcU2luZGljYWRvcyAyMDIzLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KDQoNCmBgYA0KDQojIyBPYnRlbmNpw7NuIGRlIGRpY2Npb25hcmlvcw0KYGBge3J9DQpkaWNBZ3JhdmlhZG9zMjIgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyAyMDIyLnhsc3giLCBzaGVldD0iRGljIikNCmRpY0FncmF2aWFkb3MyMyA8LSByZWFkX3hsc3goIkRhdGFcXERpY2Npb25hcmlvIEFncmF2aWFkb3MgMjAyMy54bHN4Iiwgc2hlZXQ9IkRpYyIpDQpkaWNTaW5kaWNhZG9zMjMgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyBTaW5kaWNhZG9zIDIwMjMueGxzeCIsIHNoZWV0PSJEaWMiKQ0KDQpgYGANCg0KDQojIyBBbGdvcml0bW8gRlBHcm93dGgNCiMjIyBBZ3JhdmlhZG9zIDIwMjMNCmBgYHtyfQ0KIyBBc2lnbmFjacOzbiBpbmljaWFsIGRlbCBjb25qdW50byBkZSBkYXRvcw0Kc2RBZ3JhdmlhZG9zMjMgPC0gZEFncmF2aWFkb3NfMjAyMw0KDQojIE1hbmlwdWxhY2nDs24gZGVsIGNvbmp1bnRvIHBhcmEgZGVsaW1pdGFyIA0Kc2RBZ3JhdmlhZG9zMjMgPC0gc2RBZ3JhdmlhZG9zMjMgJT4lDQogIHNlbGVjdCgtYcOxb19kZW51bmNpYSwtZ19lZGFkXzYweW3DoXMsIC1nX2VkYWRfODB5bcOhcykgJT4lDQogIGxlZnRfam9pbihkaWNBZ3JhdmlhZG9zMjIsIGJ5ID0gYygiZGVsaXRvX2NvbSI9IkV0aXF1ZXRhIikpICU+JQ0KICBzZWxlY3QoLWRlbGl0b19jb20sIC1WYWxvcikgJT4lDQogIHJlbmFtZShkZWxpdG9fY29tID0gQ8OzZGlnbykgJT4lDQogIGxlZnRfam9pbihkaWNBZ3JhdmlhZG9zMjNbZGljQWdyYXZpYWRvczIzJFZhbG9yID09ICJERVBBUlRBTUVOVE8gREUgT0NVUlJFTkNJQSBERUwgSEVDSE8iLF0sIGJ5ID0gYygiZGVwdG9fb2N1X2hlY2hvIiA9IkV0aXF1ZXRhIikpICU+JQ0KICBzZWxlY3QoLWRlcHRvX29jdV9oZWNobywgLVZhbG9yKSAlPiUNCiAgcmVuYW1lKGRlcHRvX29jdV9oZWNobyA9IEPDs2RpZ28pICU+JQ0KICBmaWx0ZXIoem9uYV9vY3VfaGVjaG8hPS05OSkgJT4lDQogIHNlbGVjdCgtZGVwdG9fb2N1X2hlY2hvLC1tdXBpb19vY3VfaGVjaG8pDQoNCiMgRWplY3VjacOzbiBkZWwgYWxnb3JpdG1vIGZwZ3Jvd3RoDQpyQWdyYXZpYWRvczIzIDwtIGZpbTRyKHNkQWdyYXZpYWRvczIzLCBtZXRob2QgPSAiZnBncm93dGgiLCB0YXJnZXQgPSAicnVsZXMiLCBzdXBwPTAuMiwgY29uZj0wLjUpDQoNCnJBZ3JhdmlhZG9zMjMgPC0gYXMockFncmF2aWFkb3MyMywgImRhdGEuZnJhbWUiKQ0KYGBgDQoNCiMjIyBBZ3JhdmlhZG9zIDIwMjMNCmBgYHtyfQ0KIyBBc2lnbmFjacOzbiBpbmljaWFsIGRlbCBjb25qdW50byBkZSBkYXRvcw0Kc2RBZ3JhdmlhZG9zMjMgPC0gZEFncmF2aWFkb3NfMjAyMw0KDQojIE1hbmlwdWxhY2nDs24gZGVsIGNvbmp1bnRvIHBhcmEgZGVsaW1pdGFyIA0Kc2RBZ3JhdmlhZG9zMjMgPC0gc2RBZ3JhdmlhZG9zMjMgJT4lDQogIHNlbGVjdCgtYcOxb19kZW51bmNpYSwtZ19lZGFkXzYweW3DoXMsIC1nX2VkYWRfODB5bcOhcykgJT4lDQogIGxlZnRfam9pbihkaWNBZ3JhdmlhZG9zMjIsIGJ5ID0gYygiZGVsaXRvX2NvbSI9IkV0aXF1ZXRhIikpICU+JQ0KICBzZWxlY3QoLWRlbGl0b19jb20sIC1WYWxvcikgJT4lDQogIHJlbmFtZShkZWxpdG9fY29tID0gQ8OzZGlnbykgJT4lDQogIGZpbHRlcihzZXhvX2FncmF2aWFkb3MgPT0gIk11amVyIikgJT4lDQogIHNlbGVjdCgtc2V4b19hZ3JhdmlhZG9zKSAlPiUNCiAgZmlsdGVyKGRlbGl0b19jb20+PSA1KSAlPiUNCiAgZmlsdGVyKGRlbGl0b19jb208PTkpICU+JQ0KICBmaWx0ZXIoZWRhZF9hZ3JhdiAhPSAtOTkpDQoNCiMgRWplY3VjacOzbiBkZWwgYWxnb3JpdG1vIGZwZ3Jvd3RoDQpyQWdyYXZpYWRvczIzIDwtIGZpbTRyKHNkQWdyYXZpYWRvczIzLCBtZXRob2QgPSAiZnBncm93dGgiLCB0YXJnZXQgPSAicnVsZXMiLCBzdXBwPTAuMiwgY29uZj0wLjUpDQoNCnJBZ3JhdmlhZG9zMjMgPC0gYXMockFncmF2aWFkb3MyMywgImRhdGEuZnJhbWUiKQ0KYGBgDQoNCiMjIyBTaW5kaWNhZG9zIDIwMjMNCmBgYHtyfQ0KIyBBc2lnbmFjacOzbiBpbmljaWFsIGRlbCBjb25qdW50byBkZSBkYXRvcw0Kc2RTaW5kaWNhZG9zMjMgPC0gZFNpbmRpY2Fkb3NfMjAyMw0KDQojIE1hbmlwdWxhY2nCtG4gZGVsIGNvbmp1bnRvIGRlIGRhdG9zIHBhcmEgaGFjZXIgbcOhcyBlc3BlY8OtZmljbyBlbCByZXN1bHRhZG8NCiMgTWFuaXB1bGFjacOzbiBkZWwgY29uanVudG8gcGFyYSBkZWxpbWl0YXIgDQpzZFNpbmRpY2Fkb3MyMyA8LSBzZFNpbmRpY2Fkb3MyMyAlPiUNCiAgc2VsZWN0KC1hw7FvX2RlbnVuY2lhLCAtem9uYV9vY3VfaGVjaG8sIC1hw7FvX2hlY2hvKSAlPiUNCiAgbGVmdF9qb2luKGRpY1NpbmRpY2Fkb3MyM1tkaWNTaW5kaWNhZG9zMjMkVmFsb3IgPT0gIkRFUEFSVEFNRU5UTyBERSBPQ1VSUkVOQ0lBIERFTCBIRUNITyIsXSwgYnkgPSBjKCJkZXB0b19vY3VfaGVjaG8iID0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZGVwdG9fb2N1X2hlY2hvLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoZGVwdG9fb2N1X2hlY2hvID0gQ8OzZGlnbykgJT4lDQogIGZpbHRlcihzZXhvX3NpbmQ9IiIpDQoNCiMgRWplY3VjacOzbiBkZWwgYWxnb3JpdG1vIGZwZ3Jvd3RoDQpyU2luZGljYWRvczIzIDwtIGZpbTRyKHNkU2luZGljYWRvczIzLCBtZXRob2QgPSAiZnBncm93dGgiLCB0YXJnZXQgPSAicnVsZXMiLCBzdXBwPTAuMiwgY29uZj0wLjUpDQoNCnJTaW5kaWNhZG9zMjMgPC0gYXMoclNpbmRpY2Fkb3MyMywgImRhdGEuZnJhbWUiKQ0KDQpgYGANCg0K</div>
 
 
 

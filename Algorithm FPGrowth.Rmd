@@ -15,8 +15,8 @@ library(readxl) # Para lectura de archivo en formato excel
 
 dAgraviados_2020 <- read_xlsx("Data\\Agraviados 2020.xlsx",sheet = "Sheet1")
 dAgraviados_2022 <- read_xlsx("Data\\Agraviados 2022.xlsx", sheet = "Sheet1")
-dAgraviados_2023 <- read_xlsx("Data\\Agraviados 2023.xlsx", sheet = "Sheet1")
 
+dAgraviados_2023 <- read_xlsx("Data\\Agraviados 2023.xlsx", sheet = "Sheet1")
 dSindicados_2023 <- read_xlsx("Data\\Sindicados 2023.xlsx", sheet = "Sheet1")
 
 
@@ -26,4 +26,76 @@ dSindicados_2023 <- read_xlsx("Data\\Sindicados 2023.xlsx", sheet = "Sheet1")
 ```{r}
 dicAgraviados22 <- read_xlsx("Data\\Diccionario 2022.xlsx", sheet="Dic")
 dicAgraviados23 <- read_xlsx("Data\\Diccionario Agraviados 2023.xlsx", sheet="Dic")
+dicSindicados23 <- read_xlsx("Data\\Diccionario Sindicados 2023.xlsx", sheet="Dic")
+
 ```
+
+
+## Algoritmo FPGrowth
+### Agraviados 2023
+```{r}
+# Asignación inicial del conjunto de datos
+sdAgraviados23 <- dAgraviados_2023
+
+# Manipulación del conjunto para delimitar 
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(-año_denuncia,-g_edad_60ymás, -g_edad_80ymás) %>%
+  left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  left_join(dicAgraviados23[dicAgraviados23$Valor == "DEPARTAMENTO DE OCURRENCIA DEL HECHO",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  filter(zona_ocu_hecho!=-99) %>%
+  select(-depto_ocu_hecho,-mupio_ocu_hecho)
+
+# Ejecución del algoritmo fpgrowth
+rAgraviados23 <- fim4r(sdAgraviados23, method = "fpgrowth", target = "rules", supp=0.2, conf=0.5)
+
+rAgraviados23 <- as(rAgraviados23, "data.frame")
+```
+
+### Agraviados 2023
+```{r}
+# Asignación inicial del conjunto de datos
+sdAgraviados23 <- dAgraviados_2023
+
+# Manipulación del conjunto para delimitar 
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(-año_denuncia,-g_edad_60ymás, -g_edad_80ymás) %>%
+  left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  filter(sexo_agraviados == "Mujer") %>%
+  select(-sexo_agraviados) %>%
+  filter(delito_com>= 5) %>%
+  filter(delito_com<=9) %>%
+  filter(edad_agrav != -99)
+
+# Ejecución del algoritmo fpgrowth
+rAgraviados23 <- fim4r(sdAgraviados23, method = "fpgrowth", target = "rules", supp=0.2, conf=0.5)
+
+rAgraviados23 <- as(rAgraviados23, "data.frame")
+```
+
+### Sindicados 2023
+```{r}
+# Asignación inicial del conjunto de datos
+sdSindicados23 <- dSindicados_2023
+
+# Manipulaci´n del conjunto de datos para hacer más específico el resultado
+# Manipulación del conjunto para delimitar 
+sdSindicados23 <- sdSindicados23 %>%
+  select(-año_denuncia, -zona_ocu_hecho, -año_hecho) %>%
+  left_join(dicSindicados23[dicSindicados23$Valor == "DEPARTAMENTO DE OCURRENCIA DEL HECHO",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  filter(sexo_sind="")
+
+# Ejecución del algoritmo fpgrowth
+rSindicados23 <- fim4r(sdSindicados23, method = "fpgrowth", target = "rules", supp=0.2, conf=0.5)
+
+rSindicados23 <- as(rSindicados23, "data.frame")
+
+```
+
