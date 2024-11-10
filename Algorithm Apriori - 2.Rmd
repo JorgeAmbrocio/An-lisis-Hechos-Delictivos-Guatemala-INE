@@ -113,9 +113,9 @@ muestra <- as(rAgraviados22,"data.frame")
 sdAgraviados23 <- dAgraviados_2023
 sdAgraviados23 <- sdAgraviados23[, !(colnames(sdAgraviados23) %in% c("año_denuncia"))]
 
-sdAgraviados22 <- sdAgraviados22 %>%
-  select(-g_edad_60ymás, -g_edad_80ymás) %>%
-  left_join(dicAgraviados22, by = c("delito_com"="Etiqueta")) %>%
+sdAgraviados23 <- sdAgraviados23 %>%
+  #select(-g_edad_60ymás, -g_edad_80ymás) %>%
+  left_join(dicAgraviados23, by = c("delito_com"="Etiqueta")) %>%
   select(-delito_com, -Valor) %>%
   rename(delito_com = Código) %>%
   filter(delito_com>=178 & delito_com<=182)  %>%

@@ -89,8 +89,7 @@ sdSindicados23 <- sdSindicados23 %>%
   select(-año_denuncia, -zona_ocu_hecho, -año_hecho) %>%
   left_join(dicSindicados23[dicSindicados23$Valor == "DEPARTAMENTO DE OCURRENCIA DEL HECHO",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
   select(-depto_ocu_hecho, -Valor) %>%
-  rename(depto_ocu_hecho = Código) %>%
-  filter(sexo_sind="")
+  rename(depto_ocu_hecho = Código)
 
 # Ejecución del algoritmo fpgrowth
 rSindicados23 <- fim4r(sdSindicados23, method = "fpgrowth", target = "rules", supp=0.2, conf=0.5)
