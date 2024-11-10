@@ -1,0 +1,667 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Uso de librerías
+```{r}
+library(dplyr) # Para manejar y manipular datos con %>%
+library(arules) # Para uso de algoritmos
+library(readxl) # Para lectura de archivo en formato excel
+library(ggplot2) # Para graficar
+```
+
+
+# Algoritmo KMeans
+
+### Obtención de datos
+```{r}
+dAgraviados_2023 <- read_xlsx("Data\\Agraviados 2023.xlsx", sheet = "Sheet1")
+dSindicados_2023 <- read_xlsx("Data\\Sindicados 2023.xlsx", sheet = "Sheet1")
+```
+
+### Obtención de diccionarios
+```{r}
+dicAgraviados23 <- read_xlsx("Data\\Diccionario Agraviados 2023.xlsx", sheet="Dic")
+dicSindicados23 <- read_xlsx("Data\\Diccionario Sindicados 2023.xlsx", sheet="Dic")
+```
+
+## Datos de agraviados 2023
+```{r}
+# Preparación del data set
+sdAgraviados23 <- dAgraviados_2023
+
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(-g_edad_60ymás, -g_edad_80ymás,-año_denuncia) %>%
+  left_join(dicAgraviados23, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  filter(delito_com>=178 & delito_com<=182)  %>%
+  left_join(dicAgraviados23[dicAgraviados23$Valor == "DEPARTAMENTO DE OCURRENCIA DEL HECHO",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  left_join(dicAgraviados23, by=c("sexo_agraviados" = "Etiqueta")) %>%
+  select(-sexo_agraviados, -Valor) %>%
+  rename(sexo_agraviados= Código) %>%
+  left_join(dicAgraviados23, by=c("est_conyugal" = "Etiqueta")) %>%
+  select(-est_conyugal, -Valor) %>%
+  rename(est_conyugal= Código) %>%
+  left_join(dicAgraviados23, by=c("dia_sem_hecho"="Etiqueta")) %>%
+  select(-dia_sem_hecho, -Valor) %>%
+  rename(dia_sem_hecho = Código)
+
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(dia_sem_hecho, delito_com, edad_agrav, depto_ocu_hecho)
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+# Eliminación de valores NAN
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.nan(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+# Eliminación de valores INF
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.infinite(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 3)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = edad_agrav, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_agrav, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Día semana hecho vs Delito cometido")+
+  theme_minimal()
+  
+```
+
+## Factorización de datos
+```{r}
+
+ddAgraviados_2023 <- dAgraviados_2023 %>%
+  left_join(dicAgraviados23, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  left_join(dicAgraviados23[dicAgraviados23$Valor == "DEPARTAMENTO DE OCURRENCIA DEL HECHO",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  left_join(dicAgraviados23, by=c("sexo_agraviados" = "Etiqueta")) %>%
+  select(-sexo_agraviados, -Valor) %>%
+  rename(sexo_agraviados= Código) %>%
+  left_join(dicAgraviados23, by=c("est_conyugal" = "Etiqueta")) %>%
+  select(-est_conyugal, -Valor) %>%
+  rename(est_conyugal= Código) %>%
+  left_join(dicAgraviados23, by=c("dia_sem_hecho"="Etiqueta")) %>%
+  select(-dia_sem_hecho, -Valor) %>%
+  rename(dia_sem_hecho = Código) %>%
+  left_join(dicAgraviados23[dicAgraviados23$Valor == "MUNICIPIO DE OCURRENCIA DEL HECHO",], by = c("mupio_ocu_hecho" ="Etiqueta")) %>%
+  select(-mupio_ocu_hecho, -Valor) %>%
+  rename(mupio_ocu_hecho = Código) 
+  
+
+ddSindicados_2023 <- dSindicados_2023 %>%
+  left_join(dicSindicados23, by = c("delito_com"="Etiqueta")) %>%
+  select(-delito_com, -Valor) %>%
+  rename(delito_com = Código) %>%
+  left_join(dicSindicados23[dicSindicados23$Valor == "DEPARTAMENTO DE OCURRENCIA DEL HECHO",], by = c("depto_ocu_hecho" ="Etiqueta")) %>%
+  select(-depto_ocu_hecho, -Valor) %>%
+  rename(depto_ocu_hecho = Código) %>%
+  left_join(dicSindicados23, by=c("sexo_per" = "Etiqueta")) %>%
+  select(-sexo_per, -Valor) %>%
+  rename(sexo_per= Código) %>%
+  left_join(dicSindicados23, by=c("est_conyugal" = "Etiqueta")) %>%
+  select(-est_conyugal, -Valor) %>%
+  rename(est_conyugal= Código) %>%
+  left_join(dicSindicados23, by=c("dia_sem_hecho"="Etiqueta")) %>%
+  select(-dia_sem_hecho, -Valor) %>%
+  rename(dia_sem_hecho = Código) %>%
+  left_join(dicSindicados23[dicSindicados23$Valor == "MUNICIPIO DE OCURRENCIA DEL HECHO",], by = c("mupio_ocu_hecho" ="Etiqueta")) %>%
+  select(-mupio_ocu_hecho, -Valor) %>%
+  rename(mupio_ocu_hecho = Código) 
+```
+
+## Edad del agrviado mediante el delito del que fue víctima
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(dia_sem_hecho, delito_com, edad_agrav, depto_ocu_hecho) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 7)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = edad_agrav, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_agrav, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito cometido vs Edad del agraviado")+
+  theme_minimal()
+  
+```
+
+
+## Aborto
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99) %>%
+  filter(delito_com >= 5, delito_com <=9)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(
+    dia_sem_hecho, delito_com, 
+    edad_agrav, depto_ocu_hecho,
+    mupio_ocu_hecho
+  ) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 7)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = edad_agrav, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_agrav, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Aborto vs Municipio del hecho ocurrido")+
+  theme_minimal()
+  
+```
+
+
+
+## Aborto
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99) %>%
+  filter(delito_com >= 5, delito_com <=9)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(
+    dia_sem_hecho, delito_com, 
+    edad_agrav, depto_ocu_hecho,
+    mupio_ocu_hecho
+  ) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 4)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = mupio_ocu_hecho, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=mupio_ocu_hecho, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito cometido vs Municipio del hecho ocurrido")+
+  theme_minimal()
+  
+```
+
+## Aborto, edades entre 20 y 40 años
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99, edad_agrav >=20, edad_agrav<=40) %>%
+  filter(delito_com >= 5, delito_com <=9)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(
+    dia_sem_hecho, delito_com, 
+    edad_agrav, depto_ocu_hecho,
+    mupio_ocu_hecho
+  ) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 7)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = edad_agrav, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_agrav, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Aborto vs Municipio del hecho ocurrido")+
+  theme_minimal()
+```
+
+## Aborto, edades entre 20 y 40 años, 
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99, edad_agrav >=20, edad_agrav<=40) %>%
+  filter(delito_com == 7)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(
+    dia_sem_hecho, delito_com, 
+    edad_agrav, depto_ocu_hecho,
+    mupio_ocu_hecho
+  ) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 7)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = edad_agrav, 
+    y = depto_ocu_hecho, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_agrav, 
+      y = depto_ocu_hecho), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Aborto vs Municipio del hecho ocurrido")+
+  theme_minimal()
+```
+
+
+## Delitos generales
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99) %>%
+  filter(delito_com >= 175, delito_com <=185) %>%
+  filter(edad_agrav <= 18)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(
+    delito_com, 
+    edad_agrav, depto_ocu_hecho,
+    mupio_ocu_hecho,est_conyugal
+  ) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 4)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = delito_com, 
+    y = edad_agrav, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=delito_com, 
+      y = edad_agrav), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Aborto vs Municipio del hecho ocurrido")+
+  theme_minimal()
+  
+```
+
+
+## Sindicados en general
+```{r}
+
+# Preparación del data set
+sdSindicados23 <- ddSindicados_2023
+
+# Filtros en filas
+sdSindicados23 <- sdSindicados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_sind != -99) 
+
+# Selección de columnas para el análisis
+sdSindicados23 <- sdSindicados23 %>%
+  select(dia_sem_hecho, delito_com, edad_sind, depto_ocu_hecho) 
+
+  
+# Eliminación de valores NA
+sdSindicados23 <- sapply(sdSindicados23, function(rr) replace(rr, is.na(rr), -1))
+sdSindicados23 <- as.data.frame(sdSindicados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdSindicados23, centers = 7)
+
+# Graficar centroides
+ggplot(
+  sdSindicados23, 
+  aes(
+    x = edad_sind, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_sind, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito cometido vs Edad del sindicado")+
+  theme_minimal()
+  
+
+```
+
+
+## Sindicados delitos de homicidio y hurtos
+```{r}
+
+# Preparación del data set
+sdSindicados23 <- ddSindicados_2023
+
+# Filtros en filas
+sdSindicados23 <- sdSindicados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_sind != -99)%>%
+  filter(delito_com >= 175, delito_com <= 190) 
+
+# Selección de columnas para el análisis
+sdSindicados23 <- sdSindicados23 %>%
+  select(dia_sem_hecho, delito_com, edad_sind, depto_ocu_hecho) 
+
+  
+# Eliminación de valores NA
+sdSindicados23 <- sapply(sdSindicados23, function(rr) replace(rr, is.na(rr), -1))
+sdSindicados23 <- as.data.frame(sdSindicados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdSindicados23, centers = 7)
+
+# Graficar centroides
+ggplot(
+  sdSindicados23, 
+  aes(
+    x = edad_sind, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_sind, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito cometido vs Edad del sindicado")+
+  theme_minimal()
+  
+
+```
+
+### Menores de edad sindicados, datos de hurtos y homicidios
+```{r}
+# Preparación del data set
+sdAgraviados23 <- ddAgraviados_2023
+
+# Filtros en filas
+sdAgraviados23 <- sdAgraviados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_agrav != -99) %>%
+  filter(delito_com >= 175, delito_com <=185) %>%
+  filter(edad_agrav <= 18)
+
+# Selección de columnas para el análisis
+sdAgraviados23 <- sdAgraviados23 %>%
+  select(
+    delito_com, 
+    edad_agrav, depto_ocu_hecho,
+    mupio_ocu_hecho,est_conyugal
+  ) 
+
+  
+# Eliminación de valores NA
+sdAgraviados23 <- sapply(sdAgraviados23, function(rr) replace(rr, is.na(rr), -1))
+sdAgraviados23 <- as.data.frame(sdAgraviados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdAgraviados23, centers = 4)
+
+# Graficar centroides
+ggplot(
+  sdAgraviados23, 
+  aes(
+    x = delito_com, 
+    y = edad_agrav, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=delito_com, 
+      y = edad_agrav), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito vs Edad del agraviado")+
+  theme_minimal()
+  
+```
+
+
+
+## Sindicados adulto mayor, delitos de hurto y homicidios
+```{r}
+
+# Preparación del data set
+sdSindicados23 <- ddSindicados_2023
+
+# Filtros en filas
+sdSindicados23 <- sdSindicados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_sind != -99, edad_sind>= 60) %>%
+  filter(delito_com >= 175, delito_com <= 190)
+
+# Selección de columnas para el análisis
+sdSindicados23 <- sdSindicados23 %>%
+  select(dia_sem_hecho, delito_com, edad_sind, depto_ocu_hecho) 
+
+  
+# Eliminación de valores NA
+sdSindicados23 <- sapply(sdSindicados23, function(rr) replace(rr, is.na(rr), -1))
+sdSindicados23 <- as.data.frame(sdSindicados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdSindicados23, centers = 4)
+
+# Graficar centroides
+ggplot(
+  sdSindicados23, 
+  aes(
+    x = edad_sind, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=edad_sind, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito cometido vs Edad del sindicado")+
+  theme_minimal()
+  
+
+```
+
+
+## Sindicados adulto mayor, delitos de hurto
+```{r}
+
+# Preparación del data set
+sdSindicados23 <- ddSindicados_2023
+
+# Filtros en filas
+sdSindicados23 <- sdSindicados23 %>%
+  filter(delito_com != 901) %>%
+  filter(edad_sind != -99, edad_sind>= 60) %>%
+  filter(delito_com >= 183, delito_com <= 190)
+
+# Selección de columnas para el análisis
+sdSindicados23 <- sdSindicados23 %>%
+  select(dia_sem_hecho, delito_com, edad_sind, depto_ocu_hecho) 
+
+  
+# Eliminación de valores NA
+sdSindicados23 <- sapply(sdSindicados23, function(rr) replace(rr, is.na(rr), -1))
+sdSindicados23 <- as.data.frame(sdSindicados23)
+
+
+# Ejecución del algoritmo
+cluster <- kmeans(sdSindicados23, centers = 3)
+
+# Graficar centroides
+ggplot(
+  sdSindicados23, 
+  aes(
+    x = depto_ocu_hecho, 
+    y = delito_com, 
+    color = as.factor(cluster$cluster)))+
+  geom_point()+
+  geom_point(
+    data = as.data.frame(cluster$centers), 
+    aes(
+      x=depto_ocu_hecho, 
+      y = delito_com), 
+    color = "black", 
+    size=4, shape=17)+
+  labs(title = "Delito cometido vs Departamento en el que ocurre")+
+  theme_minimal()
+  
+
+```
+
+
+
+
+
+
+
+
