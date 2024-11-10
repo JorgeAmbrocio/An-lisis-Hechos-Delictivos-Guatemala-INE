@@ -67,3 +67,4 @@ Los archivos se encuentran en formato para notebook de r studio, se encuentran e
 - Archivo para algoritmo apriori -> Algorithm Apriori - 2.Rmd
 - Archivo para algoritmo fpgrowth -> Algorithm FPGrowth.Rmd
 - Archivo para algoritmo kmeans -> Algorithm KMeans.Rmd
+
