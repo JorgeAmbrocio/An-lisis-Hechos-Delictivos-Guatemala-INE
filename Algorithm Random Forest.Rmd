@@ -3,10 +3,10 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-# Decision tree
+# Random Forest
 Análisis de los conjuntos de datos sindicados y agraviados, recopilados por el MP y publicados mediante el Instituto de Estadística Nacional de Guatemala. 
 
-Para la ejecución de esta sección del análisis se desarrolla el algoritmo árboles de decisión.
+Para la ejecución de esta sección del análisis se desarrolla el algoritmo bosque aleatorio.
 
 ## Carga de librerías 
 ```{r}
@@ -99,119 +99,3 @@ sdSindicados23 <- sdSindicados23 %>%
 
 
 ```
-
-
-## Ejecución de algoritmo
-
-### Agraviados 2023
-```{r}
-
-colnames(sdAgraviados23)
-
-dtAgraviados23 <- rpart(
-  sexo_agraviados ~ delito_com + est_conyugal + edad_agrav + depto_ocu_hecho
-  , data = sdAgraviados23, method = "class"
-)
-
-rpart.plot(
-  dtAgraviados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
-  box.palette = "BuGn", main="Predicción de sexo en función del delito cometido", cex = 0.5
-)
-
-```
-
-
-
-### Agraviados 2023
-```{r}
-
-colnames(sdAgraviados23)
-
-sdAgraviados23$est_conyugal <- factor(sdAgraviados23$est_conyugal )
-
-dtAgraviados23 <- rpart(
-  est_conyugal ~ delito_com + sexo_agraviados + edad_agrav + depto_ocu_hecho
-  , data = sdAgraviados23, method = "class"
-)
-
-rpart.plot(
-  dtAgraviados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
-  box.palette = "BuGn", main="Predicción de estado conyugal en función de la edad y el sexo del agraviado", cex = 0.5
-)
-
-```
-
-### Agraviados 2023
-```{r}
-
-colnames(sdAgraviados23)
-
-sdAgraviados23$est_conyugal <- factor(sdAgraviados23$est_conyugal )
-
-sdAgraviados <- sdAgraviados23
-
-sdAgraviados <- sdAgraviados %>%
-  filter(delito_com > 57 & delito_com < 227)
-
-dtAgraviados23 <- rpart(
-  est_conyugal ~ delito_com + sexo_agraviados + edad_agrav + depto_ocu_hecho
-  , data = sdAgraviados, method = "class"
-)
-
-rpart.plot(
-  dtAgraviados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
-  box.palette = "BuGn", main="Predicción de estado conyugal en función de la edad y el sexo del agraviado", cex = 0.5
-)
-
-```
-
-
-### Sindicados 2023
-```{r}
-
-colnames(sdSindicados23)
-
-sdSindicados23$est_conyugal <- factor(sdSindicados23$est_conyugal )
-
-dtSindicados23 <- rpart(
-  est_conyugal ~  sexo_per + edad_sind + depto_ocu_hecho +delito_com
-  , data = sdSindicados23, method = "class"
-)
-
-rpart.plot(
-  dtSindicados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
-  box.palette = "BuGn", main="Predicción de estado conyugal en función de la edad y el sexo del sindicado", cex = 0.5
-)
-
-```
-
-
-### Sindicados 2023
-```{r}
-
-colnames(sdSindicados23)
-
-sdSindicados23$est_conyugal <- factor(sdSindicados23$est_conyugal )
-sdSindicados23$depto_ocu_hecho <- factor(sdSindicados23$depto_ocu_hecho)
-
-sdSindicados23_ <- sdSindicados23 %>%
-  mutate(terceraedad = ifelse(edad_sind > 55, 1, 0)) %>%
-  filter(edad_sind > 0) %>%
-  filter(delito_com > 183 & delito_com < 187)
-
-dtSindicados23 <- rpart(
-  terceraedad ~   est_conyugal + sexo_per + delito_com + depto_ocu_hecho
-  , data = sdSindicados23_, method = "class"
-)
-
-rpart.plot(
-  dtSindicados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
-  box.palette = "BuGn", main="Predicción de estado conyugal en función de la edad y el sexo del sindicado", cex = 0.5
-)
-
-```
-
-
-
-
-
