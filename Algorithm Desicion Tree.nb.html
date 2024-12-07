@@ -1870,13 +1870,15 @@ sdAgraviados23 &lt;- sdAgraviados23 %&gt;%
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sbmFtZXMoZFNpbmRpY2Fkb3NfMjAyMylcbmBgYCJ9 -->
 <pre class="r"><code>colnames(dSindicados_2023)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgIFxuIFs1XSBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgICBcImRlcHRvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgIFxuWzEzXSBcInNleG9fcGVyXCIgICAgICAgICAgICAgICAgICAgICBcImVkYWRfc2luZFwiICAgICAgICAgICAgICAgICAgICBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgXG5bMTddIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcImVzdF9jb255dWdhbFwiICAgICAgICAgICAgICAgICBcImRlbGl0b19jb21cIiAgICAgICAgICAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgIFxuWzIxXSBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJwcmluY2lwYWxlc19kZWxpdG9zXCIgICAgICAgICBcbiJ9 -->
-<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                      &quot;día_denuncia&quot;                
- [5] &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                    &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                   
- [9] &quot;dia_sem_hecho&quot;                &quot;depto_ocu_hecho&quot;              &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;              
-[13] &quot;sexo_per&quot;                     &quot;edad_sind&quot;                    &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;               
-[17] &quot;g_edad_de0_80ymás&quot;            &quot;est_conyugal&quot;                 &quot;delito_com&quot;                   &quot;hora_denuncia&quot;               
-[21] &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;principales_delitos&quot;         </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgXG4gWzRdIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgICBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgXG4gWzddIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgICBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgIFxuWzEwXSBcImRlcHRvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgIFxuWzEzXSBcInNleG9fcGVyXCIgICAgICAgICAgICAgICAgICAgICBcImVkYWRfc2luZFwiICAgICAgICAgICAgICAgICAgICBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICBcblsxNl0gXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcImVzdF9jb255dWdhbFwiICAgICAgICAgICAgICAgIFxuWzE5XSBcImRlbGl0b19jb21cIiAgICAgICAgICAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgIFxuWzIyXSBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJwcmluY2lwYWxlc19kZWxpdG9zXCIgICAgICAgICBcbiJ9 -->
+<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                     
+ [4] &quot;día_denuncia&quot;                 &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                   
+ [7] &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                    &quot;dia_sem_hecho&quot;               
+[10] &quot;depto_ocu_hecho&quot;              &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;              
+[13] &quot;sexo_per&quot;                     &quot;edad_sind&quot;                    &quot;g_edad_60ymás&quot;               
+[16] &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;            &quot;est_conyugal&quot;                
+[19] &quot;delito_com&quot;                   &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;             
+[22] &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;principales_delitos&quot;         </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBc2lnbmFyIGVsIGNvbmp1bnRvIGRlIGRhdG9zXG5zZFNpbmRpY2Fkb3MyMyA8LSBkU2luZGljYWRvc18yMDIzXG5cbiMgTWFuaXB1bGFjacOzbiBkZWwgY29uanVudG9cbnNkU2luZGljYWRvczIzIDwtIHNkU2luZGljYWRvczIzICU+JVxuICBsZWZ0X2pvaW4oZGljU2luZGljYWRvczIzLCBieT1jKFwiZGVsaXRvX2NvbVwiPVwiRXRpcXVldGFcIikpICU+JVxuICBzZWxlY3QoLWRlbGl0b19jb20sIC0gVmFsb3IpICU+JVxuICByZW5hbWUoZGVsaXRvX2NvbSA9IEPDs2RpZ28pXG5cbnNkU2luZGljYWRvczIzIDwtIHNkU2luZGljYWRvczIzICU+JVxuICBsZWZ0X2pvaW4oZGljU2luZGljYWRvczIzLCBieT1jKFwic2V4b19wZXJcIj1cIkV0aXF1ZXRhXCIpKSAlPiVcbiAgc2VsZWN0KC1zZXhvX3BlciwgLSBWYWxvcikgJT4lXG4gIHJlbmFtZShzZXhvX3BlciA9IEPDs2RpZ28pXG5cblxuc2RTaW5kaWNhZG9zMjMgPC0gc2RTaW5kaWNhZG9zMjMgJT4lXG4gIGxlZnRfam9pbihkaWNTaW5kaWNhZG9zMjMsIGJ5PWMoXCJlc3RfY29ueXVnYWxcIj1cIkV0aXF1ZXRhXCIpKSAlPiVcbiAgc2VsZWN0KC1lc3RfY29ueXVnYWwsIC0gVmFsb3IpICU+JVxuICByZW5hbWUoZXN0X2Nvbnl1Z2FsID0gQ8OzZGlnbylcblxuXG5zZFNpbmRpY2Fkb3MyMyA8LSBzZFNpbmRpY2Fkb3MyMyAlPiVcbiAgbGVmdF9qb2luKGRpY1NpbmRpY2Fkb3MyMywgYnk9YyhcImRlcHRvX29jdV9oZWNob1wiPVwiRXRpcXVldGFcIikpICU+JVxuICBzZWxlY3QoLWRlcHRvX29jdV9oZWNobywgLSBWYWxvcikgJT4lXG4gIHJlbmFtZShkZXB0b19vY3VfaGVjaG8gPSBDw7NkaWdvKVxuYGBgIn0= -->
 <pre class="r"><code># Asignar el conjunto de datos
@@ -1922,13 +1924,15 @@ sdSindicados23 &lt;- sdSindicados23 %&gt;%
 <pre class="r"><code>
 colnames(sdAgraviados23)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgIFxuIFs1XSBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfYWdyYXZcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcInByaW5jaXBhbGVzX2RlbGl0b3NcIiAgICAgICAgIFxuWzE3XSBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICBcblsyMV0gXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICAgXCJzZXhvX2FncmF2aWFkb3NcIiAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICBcbiJ9 -->
-<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                      &quot;día_denuncia&quot;                
- [5] &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                    &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                   
- [9] &quot;dia_sem_hecho&quot;                &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_agrav&quot;                  
-[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;            &quot;principales_delitos&quot;         
-[17] &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;delito_com&quot;                  
-[21] &quot;depto_ocu_hecho&quot;              &quot;sexo_agraviados&quot;              &quot;est_conyugal&quot;                </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgXG4gWzRdIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgICBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgXG4gWzddIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgICBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgIFxuWzEwXSBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfYWdyYXZcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgIFxuWzE2XSBcInByaW5jaXBhbGVzX2RlbGl0b3NcIiAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgIFxuWzE5XSBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcblsyMl0gXCJzZXhvX2FncmF2aWFkb3NcIiAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICBcbiJ9 -->
+<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                     
+ [4] &quot;día_denuncia&quot;                 &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                   
+ [7] &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                    &quot;dia_sem_hecho&quot;               
+[10] &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_agrav&quot;                  
+[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;           
+[16] &quot;principales_delitos&quot;          &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;             
+[19] &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;delito_com&quot;                   &quot;depto_ocu_hecho&quot;             
+[22] &quot;sexo_agraviados&quot;              &quot;est_conyugal&quot;                </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZHRBZ3JhdmlhZG9zMjMgPC0gcnBhcnQoXG4gIHNleG9fYWdyYXZpYWRvcyB+IGRlbGl0b19jb20gKyBlc3RfY29ueXVnYWwgKyBlZGFkX2FncmF2ICsgZGVwdG9fb2N1X2hlY2hvXG4gICwgZGF0YSA9IHNkQWdyYXZpYWRvczIzLCBtZXRob2QgPSBcImNsYXNzXCJcbilcblxucnBhcnQucGxvdChcbiAgZHRBZ3JhdmlhZG9zMjMsICB0eXBlID0gMiwgZXh0cmEgPSAwLCB1bmRlciA9IFRSVUUsIGZhbGxlbi5sZWF2ZXMgPSBUUlVFLFxuICBib3gucGFsZXR0ZSA9IFwiQnVHblwiLCBtYWluPVwiUHJlZGljY2nDs24gZGUgc2V4byBlbiBmdW5jacOzbiBkZWwgZGVsaXRvIGNvbWV0aWRvXCIsIGNleCA9IDAuNVxuKVxuXG5gYGAifQ== -->
 <pre class="r"><code>dtAgraviados23 &lt;- rpart(
@@ -1947,6 +1951,69 @@ rpart.plot(
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="predicción-01" class="section level4">
+<h4>Predicción 01</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzZXhvX2FncmF2aWFkb3MgfiBkZWxpdG9fY29tICsgZXN0X2Nvbnl1Z2FsICsgZWRhZF9hZ3JhdiArIGRlcHRvX29jdV9oZWNob1xuXG4jIG51ZXZvcyBkYXRvc1xuZGF0b18wMSA8LSBkYXRhLmZyYW1lKFxuICBkZWxpdG9fY29tID0gODMsXG4gIGVzdF9jb255dWdhbCA9IDEsXG4gIGVkYWRfYWdyYXYgPSAyMixcbiAgZGVwdG9fb2N1X2hlY2hvID0gMVxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMSx0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># sexo_agraviados ~ delito_com + est_conyugal + edad_agrav + depto_ocu_hecho
+
+# nuevos datos
+dato_01 &lt;- data.frame(
+  delito_com = 83,
+  est_conyugal = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMlxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDIgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDUsXG4gIGVzdF9jb255dWdhbCA9IDIsXG4gIGVkYWRfYWdyYXYgPSAyMixcbiAgZGVwdG9fb2N1X2hlY2hvID0gMVxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMix0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># datos nuevos
+dato_02 &lt;- data.frame(
+  delito_com = 5,
+  est_conyugal = 2,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_02,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjIgXG5MZXZlbHM6IDEgMlxuIn0= -->
+<pre><code>1 
+2 
+Levels: 1 2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDkwLFxuICBlc3RfY29ueXVnYWwgPSAxLFxuICBlZGFkX2FncmF2ID0gMjIsXG4gIGRlcHRvX29jdV9oZWNobyA9IDFcbilcblxucmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDEsdHlwZT1cImNsYXNzXCIpXG5cbnJlc3VsdGFkb1xuYGBgIn0= -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 90,
+  est_conyugal = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMlxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="agraviados-2023-2" class="section level3">
 <h3>Agraviados 2023</h3>
@@ -1956,13 +2023,15 @@ rpart.plot(
 <pre class="r"><code>
 colnames(sdAgraviados23)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgIFxuIFs1XSBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfYWdyYXZcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcInByaW5jaXBhbGVzX2RlbGl0b3NcIiAgICAgICAgIFxuWzE3XSBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICBcblsyMV0gXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICAgXCJzZXhvX2FncmF2aWFkb3NcIiAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICBcbiJ9 -->
-<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                      &quot;día_denuncia&quot;                
- [5] &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                    &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                   
- [9] &quot;dia_sem_hecho&quot;                &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_agrav&quot;                  
-[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;            &quot;principales_delitos&quot;         
-[17] &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;delito_com&quot;                  
-[21] &quot;depto_ocu_hecho&quot;              &quot;sexo_agraviados&quot;              &quot;est_conyugal&quot;                </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgXG4gWzRdIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgICBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgXG4gWzddIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgICBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgIFxuWzEwXSBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfYWdyYXZcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgIFxuWzE2XSBcInByaW5jaXBhbGVzX2RlbGl0b3NcIiAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgIFxuWzE5XSBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcblsyMl0gXCJzZXhvX2FncmF2aWFkb3NcIiAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICBcbiJ9 -->
+<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                     
+ [4] &quot;día_denuncia&quot;                 &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                   
+ [7] &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                    &quot;dia_sem_hecho&quot;               
+[10] &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_agrav&quot;                  
+[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;           
+[16] &quot;principales_delitos&quot;          &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;             
+[19] &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;delito_com&quot;                   &quot;depto_ocu_hecho&quot;             
+[22] &quot;sexo_agraviados&quot;              &quot;est_conyugal&quot;                </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2RBZ3JhdmlhZG9zMjMkZXN0X2Nvbnl1Z2FsIDwtIGZhY3RvcihzZEFncmF2aWFkb3MyMyRlc3RfY29ueXVnYWwgKVxuXG5kdEFncmF2aWFkb3MyMyA8LSBycGFydChcbiAgZXN0X2Nvbnl1Z2FsIH4gZGVsaXRvX2NvbSArIHNleG9fYWdyYXZpYWRvcyArIGVkYWRfYWdyYXYgKyBkZXB0b19vY3VfaGVjaG9cbiAgLCBkYXRhID0gc2RBZ3JhdmlhZG9zMjMsIG1ldGhvZCA9IFwiY2xhc3NcIlxuKVxuXG5ycGFydC5wbG90KFxuICBkdEFncmF2aWFkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsXG4gIGJveC5wYWxldHRlID0gXCJCdUduXCIsIG1haW49XCJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIGFncmF2aWFkb1wiLCBjZXggPSAwLjVcbilcblxuYGBgIn0= -->
 <pre class="r"><code>sdAgraviados23$est_conyugal &lt;- factor(sdAgraviados23$est_conyugal )
@@ -1983,6 +2052,69 @@ rpart.plot(
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="predicción-02" class="section level4">
+<h4>Predicción 02</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBlc3RfY29ueXVnYWwgfiBkZWxpdG9fY29tICsgc2V4b19hZ3JhdmlhZG9zICsgZWRhZF9hZ3JhdiArIGRlcHRvX29jdV9oZWNob1xuXG4jIG51ZXZvcyBkYXRvc1xuZGF0b18wMSA8LSBkYXRhLmZyYW1lKFxuICBkZWxpdG9fY29tID0gMTIsXG4gIHNleG9fYWdyYXZpYWRvcyA9IDEsXG4gIGVkYWRfYWdyYXYgPSAyMixcbiAgZGVwdG9fb2N1X2hlY2hvID0gMVxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMSx0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># est_conyugal ~ delito_com + sexo_agraviados + edad_agrav + depto_ocu_hecho
+
+# nuevos datos
+dato_01 &lt;- data.frame(
+  delito_com = 12,
+  sexo_agraviados = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDIgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDUsXG4gIHNleG9fYWdyYXZpYWRvcyA9IDEsXG4gIGVkYWRfYWdyYXYgPSAzNSxcbiAgZGVwdG9fb2N1X2hlY2hvID0gMVxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMix0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># datos nuevos
+dato_02 &lt;- data.frame(
+  delito_com = 5,
+  sexo_agraviados = 1,
+  edad_agrav = 35,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_02,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjIgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+2 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDkwLFxuICBzZXhvX2FncmF2aWFkb3MgPSAyLFxuICBlZGFkX2FncmF2ID0gMjIsXG4gIGRlcHRvX29jdV9oZWNobyA9IDFcbilcblxucmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDEsdHlwZT1cImNsYXNzXCIpXG5cbnJlc3VsdGFkb1xuYGBgIn0= -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 90,
+  sexo_agraviados = 2,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="agraviados-2023-3" class="section level3">
 <h3>Agraviados 2023</h3>
@@ -1992,13 +2124,15 @@ rpart.plot(
 <pre class="r"><code>
 colnames(sdAgraviados23)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgIFxuIFs1XSBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfYWdyYXZcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcInByaW5jaXBhbGVzX2RlbGl0b3NcIiAgICAgICAgIFxuWzE3XSBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICBcblsyMV0gXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICAgXCJzZXhvX2FncmF2aWFkb3NcIiAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICBcbiJ9 -->
-<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                      &quot;día_denuncia&quot;                
- [5] &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                    &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                   
- [9] &quot;dia_sem_hecho&quot;                &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_agrav&quot;                  
-[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;            &quot;principales_delitos&quot;         
-[17] &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;delito_com&quot;                  
-[21] &quot;depto_ocu_hecho&quot;              &quot;sexo_agraviados&quot;              &quot;est_conyugal&quot;                </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgXG4gWzRdIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgICBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgXG4gWzddIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgICBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgIFxuWzEwXSBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfYWdyYXZcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgIFxuWzE2XSBcInByaW5jaXBhbGVzX2RlbGl0b3NcIiAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgIFxuWzE5XSBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcblsyMl0gXCJzZXhvX2FncmF2aWFkb3NcIiAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICBcbiJ9 -->
+<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                     
+ [4] &quot;día_denuncia&quot;                 &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                   
+ [7] &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                    &quot;dia_sem_hecho&quot;               
+[10] &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_agrav&quot;                  
+[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;           
+[16] &quot;principales_delitos&quot;          &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;             
+[19] &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;delito_com&quot;                   &quot;depto_ocu_hecho&quot;             
+[22] &quot;sexo_agraviados&quot;              &quot;est_conyugal&quot;                </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2RBZ3JhdmlhZG9zMjMkZXN0X2Nvbnl1Z2FsIDwtIGZhY3RvcihzZEFncmF2aWFkb3MyMyRlc3RfY29ueXVnYWwgKVxuXG5zZEFncmF2aWFkb3MgPC0gc2RBZ3JhdmlhZG9zMjNcblxuc2RBZ3JhdmlhZG9zIDwtIHNkQWdyYXZpYWRvcyAlPiVcbiAgZmlsdGVyKGRlbGl0b19jb20gPiA1NyAmIGRlbGl0b19jb20gPCAyMjcpXG5cbmR0QWdyYXZpYWRvczIzIDwtIHJwYXJ0KFxuICBlc3RfY29ueXVnYWwgfiBkZWxpdG9fY29tICsgc2V4b19hZ3JhdmlhZG9zICsgZWRhZF9hZ3JhdiArIGRlcHRvX29jdV9oZWNob1xuICAsIGRhdGEgPSBzZEFncmF2aWFkb3MsIG1ldGhvZCA9IFwiY2xhc3NcIlxuKVxuXG5ycGFydC5wbG90KFxuICBkdEFncmF2aWFkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsXG4gIGJveC5wYWxldHRlID0gXCJCdUduXCIsIG1haW49XCJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIGFncmF2aWFkb1wiLCBjZXggPSAwLjVcbilcblxuYGBgIn0= -->
 <pre class="r"><code>sdAgraviados23$est_conyugal &lt;- factor(sdAgraviados23$est_conyugal )
@@ -2024,6 +2158,69 @@ rpart.plot(
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="predicción-03" class="section level4">
+<h4>Predicción 03</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBlc3RfY29ueXVnYWwgfiBkZWxpdG9fY29tICsgc2V4b19hZ3JhdmlhZG9zICsgZWRhZF9hZ3JhdiArIGRlcHRvX29jdV9oZWNob1xuXG4jIG51ZXZvcyBkYXRvc1xuZGF0b18wMSA8LSBkYXRhLmZyYW1lKFxuICBkZWxpdG9fY29tID0gMTIsXG4gIHNleG9fYWdyYXZpYWRvcyA9IDEsXG4gIGVkYWRfYWdyYXYgPSAyMixcbiAgZGVwdG9fb2N1X2hlY2hvID0gMVxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMSx0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># est_conyugal ~ delito_com + sexo_agraviados + edad_agrav + depto_ocu_hecho
+
+# nuevos datos
+dato_01 &lt;- data.frame(
+  delito_com = 12,
+  sexo_agraviados = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDIgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDUsXG4gIHNleG9fYWdyYXZpYWRvcyA9IDEsXG4gIGVkYWRfYWdyYXYgPSAzNSxcbiAgZGVwdG9fb2N1X2hlY2hvID0gMVxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMix0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># datos nuevos
+dato_02 &lt;- data.frame(
+  delito_com = 5,
+  sexo_agraviados = 1,
+  edad_agrav = 35,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_02,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjIgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+2 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDkwLFxuICBzZXhvX2FncmF2aWFkb3MgPSAyLFxuICBlZGFkX2FncmF2ID0gMjIsXG4gIGRlcHRvX29jdV9oZWNobyA9IDFcbilcblxucmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDEsdHlwZT1cImNsYXNzXCIpXG5cbnJlc3VsdGFkb1xuYGBgIn0= -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 90,
+  sexo_agraviados = 2,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtAgraviados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="sindicados-2023-1" class="section level3">
 <h3>Sindicados 2023</h3>
@@ -2033,13 +2230,15 @@ rpart.plot(
 <pre class="r"><code>
 colnames(sdSindicados23)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgIFxuIFs1XSBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfc2luZFwiICAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgIFxuWzE3XSBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJwcmluY2lwYWxlc19kZWxpdG9zXCIgICAgICAgICAgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICBcblsyMV0gXCJzZXhvX3BlclwiICAgICAgICAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcbiJ9 -->
-<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                      &quot;día_denuncia&quot;                
- [5] &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                    &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                   
- [9] &quot;dia_sem_hecho&quot;                &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_sind&quot;                   
-[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;            &quot;hora_denuncia&quot;               
-[17] &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;principales_delitos&quot;          &quot;delito_com&quot;                  
-[21] &quot;sexo_per&quot;                     &quot;est_conyugal&quot;                 &quot;depto_ocu_hecho&quot;             </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgXG4gWzRdIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgICBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgXG4gWzddIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgICBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgIFxuWzEwXSBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfc2luZFwiICAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgIFxuWzE2XSBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCJcblsxOV0gXCJwcmluY2lwYWxlc19kZWxpdG9zXCIgICAgICAgICAgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICAgXCJzZXhvX3BlclwiICAgICAgICAgICAgICAgICAgICBcblsyMl0gXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcbiJ9 -->
+<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                     
+ [4] &quot;día_denuncia&quot;                 &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                   
+ [7] &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                    &quot;dia_sem_hecho&quot;               
+[10] &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_sind&quot;                   
+[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;           
+[16] &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot;
+[19] &quot;principales_delitos&quot;          &quot;delito_com&quot;                   &quot;sexo_per&quot;                    
+[22] &quot;est_conyugal&quot;                 &quot;depto_ocu_hecho&quot;             </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2RTaW5kaWNhZG9zMjMkZXN0X2Nvbnl1Z2FsIDwtIGZhY3RvcihzZFNpbmRpY2Fkb3MyMyRlc3RfY29ueXVnYWwgKVxuXG5kdFNpbmRpY2Fkb3MyMyA8LSBycGFydChcbiAgZXN0X2Nvbnl1Z2FsIH4gIHNleG9fcGVyICsgZWRhZF9zaW5kICsgZGVwdG9fb2N1X2hlY2hvICtkZWxpdG9fY29tXG4gICwgZGF0YSA9IHNkU2luZGljYWRvczIzLCBtZXRob2QgPSBcImNsYXNzXCJcbilcblxucnBhcnQucGxvdChcbiAgZHRTaW5kaWNhZG9zMjMsICB0eXBlID0gMiwgZXh0cmEgPSAwLCB1bmRlciA9IFRSVUUsIGZhbGxlbi5sZWF2ZXMgPSBUUlVFLFxuICBib3gucGFsZXR0ZSA9IFwiQnVHblwiLCBtYWluPVwiUHJlZGljY2nDs24gZGUgZXN0YWRvIGNvbnl1Z2FsIGVuIGZ1bmNpw7NuIGRlIGxhIGVkYWQgeSBlbCBzZXhvIGRlbCBzaW5kaWNhZG9cIiwgY2V4ID0gMC41XG4pXG5cbmBgYCJ9 -->
 <pre class="r"><code>sdSindicados23$est_conyugal &lt;- factor(sdSindicados23$est_conyugal )
@@ -2060,6 +2259,87 @@ rpart.plot(
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="predicción-04" class="section level4">
+<h4>Predicción 04</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBlc3RfY29ueXVnYWwgfiAgc2V4b19wZXIgKyBlZGFkX3NpbmQgKyBkZXB0b19vY3VfaGVjaG8gK2RlbGl0b19jb21cblxuIyBudWV2b3MgZGF0b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDEyLFxuICBzZXhvX3BlciA9IDEsXG4gIGVkYWRfc2luZCA9IDIyLFxuICBkZXB0b19vY3VfaGVjaG8gPSAxXG4pXG5cbnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAxLHR5cGU9XCJjbGFzc1wiKVxuXG5yZXN1bHRhZG9cbmBgYCJ9 -->
+<pre class="r"><code># est_conyugal ~  sexo_per + edad_sind + depto_ocu_hecho +delito_com
+
+# nuevos datos
+dato_01 &lt;- data.frame(
+  delito_com = 12,
+  sexo_per = 1,
+  edad_sind = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtSindicados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDIgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDUsXG4gIHNleG9fcGVyID0gMSxcbiAgZWRhZF9zaW5kID0gMzUsXG4gIGRlcHRvX29jdV9oZWNobyA9IDFcbilcblxucmVzdWx0YWRvIDwtIHByZWRpY3QoZHRTaW5kaWNhZG9zMjMsIGRhdG9fMDIsdHlwZT1cImNsYXNzXCIpXG5cbnJlc3VsdGFkb1xuYGBgIn0= -->
+<pre class="r"><code># datos nuevos
+dato_02 &lt;- data.frame(
+  delito_com = 5,
+  sexo_per = 1,
+  edad_sind = 35,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtSindicados23, dato_02,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDkwLFxuICBzZXhvX3BlciA9IDIsXG4gIGVkYWRfc2luZCA9IDM3LFxuICBkZXB0b19vY3VfaGVjaG8gPSAxXG4pXG5cbnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAxLHR5cGU9XCJjbGFzc1wiKVxuXG5yZXN1bHRhZG9cbmBgYCJ9 -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 90,
+  sexo_per = 2,
+  edad_sind = 37,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtSindicados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjIgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+2 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDkwLFxuICBzZXhvX3BlciA9IDIsXG4gIGVkYWRfc2luZCA9IDQ1LFxuICBkZXB0b19vY3VfaGVjaG8gPSAxXG4pXG5cbnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAxLHR5cGU9XCJjbGFzc1wiKVxuXG5yZXN1bHRhZG9cbmBgYCJ9 -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 90,
+  sexo_per = 2,
+  edad_sind = 45,
+  depto_ocu_hecho = 1
+)
+
+resultado &lt;- predict(dtSindicados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjIgXG5MZXZlbHM6IDEgMiAzIDQgNVxuIn0= -->
+<pre><code>1 
+2 
+Levels: 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="sindicados-2023-2" class="section level3">
 <h3>Sindicados 2023</h3>
@@ -2069,13 +2349,15 @@ rpart.plot(
 <pre class="r"><code>
 colnames(sdSindicados23)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgIFxuIFs1XSBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgICBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfc2luZFwiICAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgICBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgIFxuWzE3XSBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCIgXCJwcmluY2lwYWxlc19kZWxpdG9zXCIgICAgICAgICAgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICBcblsyMV0gXCJzZXhvX3BlclwiICAgICAgICAgICAgICAgICAgICAgXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcbiJ9 -->
-<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                      &quot;día_denuncia&quot;                
- [5] &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                    &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                   
- [9] &quot;dia_sem_hecho&quot;                &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_sind&quot;                   
-[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;            &quot;hora_denuncia&quot;               
-[17] &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot; &quot;principales_delitos&quot;          &quot;delito_com&quot;                  
-[21] &quot;sexo_per&quot;                     &quot;est_conyugal&quot;                 &quot;depto_ocu_hecho&quot;             </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIm7Dum1fY29ycmVcIiAgICAgICAgICAgICAgICAgICAgXCJhw7FvX2RlbnVuY2lhXCIgICAgICAgICAgICAgICAgIFwiUmVnX21lc1wiICAgICAgICAgICAgICAgICAgICAgXG4gWzRdIFwiZMOtYV9kZW51bmNpYVwiICAgICAgICAgICAgICAgICBcImTDrWFfc2VtX2RlbnVuY2lhXCIgICAgICAgICAgICAgXCJhw7FvX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgXG4gWzddIFwibWVzX2hlY2hvXCIgICAgICAgICAgICAgICAgICAgIFwiZMOtYV9oZWNob1wiICAgICAgICAgICAgICAgICAgICBcImRpYV9zZW1faGVjaG9cIiAgICAgICAgICAgICAgIFxuWzEwXSBcIm11cGlvX29jdV9oZWNob1wiICAgICAgICAgICAgICBcInpvbmFfb2N1X2hlY2hvXCIgICAgICAgICAgICAgICBcImVkYWRfc2luZFwiICAgICAgICAgICAgICAgICAgIFxuWzEzXSBcImdfZWRhZF82MHltw6FzXCIgICAgICAgICAgICAgICAgXCJnX2VkYWRfODB5bcOhc1wiICAgICAgICAgICAgICAgIFwiZ19lZGFkX2RlMF84MHltw6FzXCIgICAgICAgICAgIFxuWzE2XSBcImhvcmFfZGVudW5jaWFcIiAgICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYVwiICAgICAgICAgICAgICBcImdfaG9yYV9kZW51bmNpYV9tYcOxLnRhci5ub2NoXCJcblsxOV0gXCJwcmluY2lwYWxlc19kZWxpdG9zXCIgICAgICAgICAgXCJkZWxpdG9fY29tXCIgICAgICAgICAgICAgICAgICAgXCJzZXhvX3BlclwiICAgICAgICAgICAgICAgICAgICBcblsyMl0gXCJlc3RfY29ueXVnYWxcIiAgICAgICAgICAgICAgICAgXCJkZXB0b19vY3VfaGVjaG9cIiAgICAgICAgICAgICBcbiJ9 -->
+<pre><code> [1] &quot;núm_corre&quot;                    &quot;año_denuncia&quot;                 &quot;Reg_mes&quot;                     
+ [4] &quot;día_denuncia&quot;                 &quot;día_sem_denuncia&quot;             &quot;año_hecho&quot;                   
+ [7] &quot;mes_hecho&quot;                    &quot;día_hecho&quot;                    &quot;dia_sem_hecho&quot;               
+[10] &quot;mupio_ocu_hecho&quot;              &quot;zona_ocu_hecho&quot;               &quot;edad_sind&quot;                   
+[13] &quot;g_edad_60ymás&quot;                &quot;g_edad_80ymás&quot;                &quot;g_edad_de0_80ymás&quot;           
+[16] &quot;hora_denuncia&quot;                &quot;g_hora_denuncia&quot;              &quot;g_hora_denuncia_mañ.tar.noch&quot;
+[19] &quot;principales_delitos&quot;          &quot;delito_com&quot;                   &quot;sexo_per&quot;                    
+[22] &quot;est_conyugal&quot;                 &quot;depto_ocu_hecho&quot;             </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2RTaW5kaWNhZG9zMjMkZXN0X2Nvbnl1Z2FsIDwtIGZhY3RvcihzZFNpbmRpY2Fkb3MyMyRlc3RfY29ueXVnYWwgKVxuc2RTaW5kaWNhZG9zMjMkZGVwdG9fb2N1X2hlY2hvIDwtIGZhY3RvcihzZFNpbmRpY2Fkb3MyMyRkZXB0b19vY3VfaGVjaG8pXG5cbnNkU2luZGljYWRvczIzXyA8LSBzZFNpbmRpY2Fkb3MyMyAlPiVcbiAgbXV0YXRlKHRlcmNlcmFlZGFkID0gaWZlbHNlKGVkYWRfc2luZCA+IDU1LCAxLCAwKSkgJT4lXG4gIGZpbHRlcihlZGFkX3NpbmQgPiAwKSAlPiVcbiAgZmlsdGVyKGRlbGl0b19jb20gPiAxODMgJiBkZWxpdG9fY29tIDwgMTg3KVxuXG5kdFNpbmRpY2Fkb3MyMyA8LSBycGFydChcbiAgdGVyY2VyYWVkYWQgfiAgIGVzdF9jb255dWdhbCArIHNleG9fcGVyICsgZGVsaXRvX2NvbSArIGRlcHRvX29jdV9oZWNob1xuICAsIGRhdGEgPSBzZFNpbmRpY2Fkb3MyM18sIG1ldGhvZCA9IFwiY2xhc3NcIlxuKVxuXG5ycGFydC5wbG90KFxuICBkdFNpbmRpY2Fkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsXG4gIGJveC5wYWxldHRlID0gXCJCdUduXCIsIG1haW49XCJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIHNpbmRpY2Fkb1wiLCBjZXggPSAwLjVcbilcblxuYGBgIn0= -->
 <pre class="r"><code>sdSindicados23$est_conyugal &lt;- factor(sdSindicados23$est_conyugal )
@@ -2102,12 +2384,93 @@ rpart.plot(
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="predicción-05" class="section level4">
+<h4>Predicción 05</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0ZXJjZXJhZWRhZCB+ICAgZXN0X2Nvbnl1Z2FsICsgc2V4b19wZXIgKyBkZWxpdG9fY29tICsgZGVwdG9fb2N1X2hlY2hvXG5cbiMgbnVldm9zIGRhdG9zXG5kYXRvXzAxIDwtIGRhdGEuZnJhbWUoXG4gIGRlbGl0b19jb20gPSAzMjAsXG4gIHNleG9fcGVyID0gMSxcbiAgZXN0X2Nvbnl1Z2FsID0gXCIyXCIsXG4gIGRlcHRvX29jdV9oZWNobyA9IFwiMVwiXG4pXG5cbnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAxLHR5cGU9XCJjbGFzc1wiKVxuXG5yZXN1bHRhZG9cbmBgYCJ9 -->
+<pre class="r"><code># terceraedad ~   est_conyugal + sexo_per + delito_com + depto_ocu_hecho
+
+# nuevos datos
+dato_01 &lt;- data.frame(
+  delito_com = 320,
+  sexo_per = 1,
+  est_conyugal = &quot;2&quot;,
+  depto_ocu_hecho = &quot;1&quot;
+)
+
+resultado &lt;- predict(dtSindicados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjAgXG5MZXZlbHM6IDAgMVxuIn0= -->
+<pre><code>1 
+0 
+Levels: 0 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDIgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDI0MCxcbiAgc2V4b19wZXIgPSAxLFxuICBlc3RfY29ueXVnYWwgPSBcIjFcIixcbiAgZGVwdG9fb2N1X2hlY2hvID0gXCIxXCJcbilcblxucmVzdWx0YWRvIDwtIHByZWRpY3QoZHRTaW5kaWNhZG9zMjMsIGRhdG9fMDIsdHlwZT1cImNsYXNzXCIpXG5cbnJlc3VsdGFkb1xuYGBgIn0= -->
+<pre class="r"><code># datos nuevos
+dato_02 &lt;- data.frame(
+  delito_com = 240,
+  sexo_per = 1,
+  est_conyugal = &quot;1&quot;,
+  depto_ocu_hecho = &quot;1&quot;
+)
+
+resultado &lt;- predict(dtSindicados23, dato_02,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjAgXG5MZXZlbHM6IDAgMVxuIn0= -->
+<pre><code>1 
+0 
+Levels: 0 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDkwLFxuICBzZXhvX3BlciA9IDIsXG4gIGVzdF9jb255dWdhbCA9IFwiM1wiLFxuICBkZXB0b19vY3VfaGVjaG8gPSBcIjFcIlxuKVxuXG5yZXN1bHRhZG8gPC0gcHJlZGljdChkdFNpbmRpY2Fkb3MyMywgZGF0b18wMSx0eXBlPVwiY2xhc3NcIilcblxucmVzdWx0YWRvXG5gYGAifQ== -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 90,
+  sexo_per = 2,
+  est_conyugal = &quot;3&quot;,
+  depto_ocu_hecho = &quot;1&quot;
+)
+
+resultado &lt;- predict(dtSindicados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjAgXG5MZXZlbHM6IDAgMVxuIn0= -->
+<pre><code>1 
+0 
+Levels: 0 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBkYXRvcyBudWV2b3NcbmRhdG9fMDEgPC0gZGF0YS5mcmFtZShcbiAgZGVsaXRvX2NvbSA9IDM1MCxcbiAgc2V4b19wZXIgPSAyLFxuICBlc3RfY29ueXVnYWwgPSBcIjRcIixcbiAgZGVwdG9fb2N1X2hlY2hvID0gXCIyMVwiXG4pXG5cbnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAxLHR5cGU9XCJjbGFzc1wiKVxuXG5yZXN1bHRhZG9cbmBgYCJ9 -->
+<pre class="r"><code># datos nuevos
+dato_01 &lt;- data.frame(
+  delito_com = 350,
+  sexo_per = 2,
+  est_conyugal = &quot;4&quot;,
+  depto_ocu_hecho = &quot;21&quot;
+)
+
+resultado &lt;- predict(dtSindicados23, dato_01,type=&quot;class&quot;)
+
+resultado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMSBcbjEgXG5MZXZlbHM6IDAgMVxuIn0= -->
+<pre><code>1 
+1 
+Levels: 0 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 </div>
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIERlY2lzaW9uIHRyZWUNCkFuw6FsaXNpcyBkZSBsb3MgY29uanVudG9zIGRlIGRhdG9zIHNpbmRpY2Fkb3MgeSBhZ3JhdmlhZG9zLCByZWNvcGlsYWRvcyBwb3IgZWwgTVAgeSBwdWJsaWNhZG9zIG1lZGlhbnRlIGVsIEluc3RpdHV0byBkZSBFc3RhZMOtc3RpY2EgTmFjaW9uYWwgZGUgR3VhdGVtYWxhLiANCg0KUGFyYSBsYSBlamVjdWNpw7NuIGRlIGVzdGEgc2VjY2nDs24gZGVsIGFuw6FsaXNpcyBzZSBkZXNhcnJvbGxhIGVsIGFsZ29yaXRtbyDDoXJib2xlcyBkZSBkZWNpc2nDs24uDQoNCiMjIENhcmdhIGRlIGxpYnJlcsOtYXMgDQpgYGB7cn0NCmxpYnJhcnkocnBhcnQpICMgcGFyYSBjb25zdHJ1Y2Npw7NuIGRlbCDDoXJib2wNCmxpYnJhcnkocnBhcnQucGxvdCkgIyBwYXJhIGdyYWZpY2FyIGVsIMOhcmJvbA0KbGlicmFyeShkcGx5cikgIyBwYXJhIG1hbmlwdWxhciBsb3MgY29uanVudG9zIGRlIGRhdG9zDQpsaWJyYXJ5KHJlYWR4bCkgIyBwYXJhIGxlZXIgbG9zIGFyY2hpdm9zIGV4Y2VsDQpgYGANCg0KDQojIyBDYXJnYSBkZSBsb3MgZGF0b3MNCmBgYHtyfQ0KDQpkQWdyYXZpYWRvc18yMDIwIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIwLnhsc3giLHNoZWV0ID0gIlNoZWV0MSIpDQpkQWdyYXZpYWRvc18yMDIyIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIyLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KDQpkQWdyYXZpYWRvc18yMDIzIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIzLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KZFNpbmRpY2Fkb3NfMjAyMyA8LSByZWFkX3hsc3goIkRhdGFcXFNpbmRpY2Fkb3MgMjAyMy54bHN4Iiwgc2hlZXQgPSAiU2hlZXQxIikNCg0KDQpgYGANCg0KDQojIyBPYnRlbmNpw7NuIGRlIGRpY2Npb25hcmlvcw0KYGBge3J9DQpkaWNBZ3JhdmlhZG9zMjIgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyAyMDIyLnhsc3giLCBzaGVldD0iRGljIikNCmRpY0FncmF2aWFkb3MyMyA8LSByZWFkX3hsc3goIkRhdGFcXERpY2Npb25hcmlvIEFncmF2aWFkb3MgMjAyMy54bHN4Iiwgc2hlZXQ9IkRpYyIpDQpkaWNTaW5kaWNhZG9zMjMgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyBTaW5kaWNhZG9zIDIwMjMueGxzeCIsIHNoZWV0PSJEaWMiKQ0KDQpgYGANCg0KIyMgUHJlcGFyYWNpw7NuIGRlIGxvcyBjb25qdW50b3MgZGUgZGF0b3MNCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQojIEFzaWduYXIgZWwgY29uanVudG8gZGUgZGF0b3MNCnNkQWdyYXZpYWRvczIzIDwtIGRBZ3JhdmlhZG9zXzIwMjMNCg0KIyBNYW5pcHVsYWNpw7NuIGRlbCBjb25qdW50byBwYXJhIGRlbGltaXRhciANCnNkQWdyYXZpYWRvczIzIDwtIHNkQWdyYXZpYWRvczIzICU+JQ0KICBsZWZ0X2pvaW4oZGljQWdyYXZpYWRvczIyLCBieSA9IGMoImRlbGl0b19jb20iPSJFdGlxdWV0YSIpKSAlPiUNCiAgc2VsZWN0KC1kZWxpdG9fY29tLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoZGVsaXRvX2NvbSA9IEPDs2RpZ28pICU+JQ0KICBsZWZ0X2pvaW4oZGljQWdyYXZpYWRvczIzW2RpY0FncmF2aWFkb3MyMyRWYWxvciA9PSAiREVQQVJUQU1FTlRPIERFIE9DVVJSRU5DSUEgREVMIEhFQ0hPIixdLCBieSA9IGMoImRlcHRvX29jdV9oZWNobyIgPSJFdGlxdWV0YSIpKSAlPiUNCiAgc2VsZWN0KC1kZXB0b19vY3VfaGVjaG8sIC1WYWxvcikgJT4lDQogIHJlbmFtZShkZXB0b19vY3VfaGVjaG8gPSBDw7NkaWdvKQ0KDQpzZEFncmF2aWFkb3MyMyA8LSBzZEFncmF2aWFkb3MyMyAlPiUNCiAgbGVmdF9qb2luKGRpY0FncmF2aWFkb3MyMywgYnkgPSBjKCJzZXhvX2FncmF2aWFkb3MiID0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtc2V4b19hZ3JhdmlhZG9zLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoc2V4b19hZ3JhdmlhZG9zID0gQ8OzZGlnbykNCg0KDQpzZEFncmF2aWFkb3MyMyA8LSBzZEFncmF2aWFkb3MyMyAlPiUNCiAgbGVmdF9qb2luKGRpY0FncmF2aWFkb3MyMywgYnkgPSBjKCJlc3RfY29ueXVnYWwiID0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZXN0X2Nvbnl1Z2FsLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoZXN0X2Nvbnl1Z2FsID0gQ8OzZGlnbykNCiAgICAgICAgICAgIA0KYGBgDQoNCiMjIyBTaW5kaWNhZG9zIDIwMjMNCmBgYHtyfQ0KY29sbmFtZXMoZFNpbmRpY2Fkb3NfMjAyMykNCg0KIyBBc2lnbmFyIGVsIGNvbmp1bnRvIGRlIGRhdG9zDQpzZFNpbmRpY2Fkb3MyMyA8LSBkU2luZGljYWRvc18yMDIzDQoNCiMgTWFuaXB1bGFjacOzbiBkZWwgY29uanVudG8NCnNkU2luZGljYWRvczIzIDwtIHNkU2luZGljYWRvczIzICU+JQ0KICBsZWZ0X2pvaW4oZGljU2luZGljYWRvczIzLCBieT1jKCJkZWxpdG9fY29tIj0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZGVsaXRvX2NvbSwgLSBWYWxvcikgJT4lDQogIHJlbmFtZShkZWxpdG9fY29tID0gQ8OzZGlnbykNCg0Kc2RTaW5kaWNhZG9zMjMgPC0gc2RTaW5kaWNhZG9zMjMgJT4lDQogIGxlZnRfam9pbihkaWNTaW5kaWNhZG9zMjMsIGJ5PWMoInNleG9fcGVyIj0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtc2V4b19wZXIsIC0gVmFsb3IpICU+JQ0KICByZW5hbWUoc2V4b19wZXIgPSBDw7NkaWdvKQ0KDQoNCnNkU2luZGljYWRvczIzIDwtIHNkU2luZGljYWRvczIzICU+JQ0KICBsZWZ0X2pvaW4oZGljU2luZGljYWRvczIzLCBieT1jKCJlc3RfY29ueXVnYWwiPSJFdGlxdWV0YSIpKSAlPiUNCiAgc2VsZWN0KC1lc3RfY29ueXVnYWwsIC0gVmFsb3IpICU+JQ0KICByZW5hbWUoZXN0X2Nvbnl1Z2FsID0gQ8OzZGlnbykNCg0KDQpzZFNpbmRpY2Fkb3MyMyA8LSBzZFNpbmRpY2Fkb3MyMyAlPiUNCiAgbGVmdF9qb2luKGRpY1NpbmRpY2Fkb3MyMywgYnk9YygiZGVwdG9fb2N1X2hlY2hvIj0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZGVwdG9fb2N1X2hlY2hvLCAtIFZhbG9yKSAlPiUNCiAgcmVuYW1lKGRlcHRvX29jdV9oZWNobyA9IEPDs2RpZ28pDQoNCg0KYGBgDQoNCg0KIyMgRWplY3VjacOzbiBkZSBhbGdvcml0bW8NCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkQWdyYXZpYWRvczIzKQ0KDQpkdEFncmF2aWFkb3MyMyA8LSBycGFydCgNCiAgc2V4b19hZ3JhdmlhZG9zIH4gZGVsaXRvX2NvbSArIGVzdF9jb255dWdhbCArIGVkYWRfYWdyYXYgKyBkZXB0b19vY3VfaGVjaG8NCiAgLCBkYXRhID0gc2RBZ3JhdmlhZG9zMjMsIG1ldGhvZCA9ICJjbGFzcyINCikNCg0KcnBhcnQucGxvdCgNCiAgZHRBZ3JhdmlhZG9zMjMsICB0eXBlID0gMiwgZXh0cmEgPSAwLCB1bmRlciA9IFRSVUUsIGZhbGxlbi5sZWF2ZXMgPSBUUlVFLA0KICBib3gucGFsZXR0ZSA9ICJCdUduIiwgbWFpbj0iUHJlZGljY2nDs24gZGUgc2V4byBlbiBmdW5jacOzbiBkZWwgZGVsaXRvIGNvbWV0aWRvIiwgY2V4ID0gMC41DQopDQoNCmBgYA0KDQoNCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkQWdyYXZpYWRvczIzKQ0KDQpzZEFncmF2aWFkb3MyMyRlc3RfY29ueXVnYWwgPC0gZmFjdG9yKHNkQWdyYXZpYWRvczIzJGVzdF9jb255dWdhbCApDQoNCmR0QWdyYXZpYWRvczIzIDwtIHJwYXJ0KA0KICBlc3RfY29ueXVnYWwgfiBkZWxpdG9fY29tICsgc2V4b19hZ3JhdmlhZG9zICsgZWRhZF9hZ3JhdiArIGRlcHRvX29jdV9oZWNobw0KICAsIGRhdGEgPSBzZEFncmF2aWFkb3MyMywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdEFncmF2aWFkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIGFncmF2aWFkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkQWdyYXZpYWRvczIzKQ0KDQpzZEFncmF2aWFkb3MyMyRlc3RfY29ueXVnYWwgPC0gZmFjdG9yKHNkQWdyYXZpYWRvczIzJGVzdF9jb255dWdhbCApDQoNCnNkQWdyYXZpYWRvcyA8LSBzZEFncmF2aWFkb3MyMw0KDQpzZEFncmF2aWFkb3MgPC0gc2RBZ3JhdmlhZG9zICU+JQ0KICBmaWx0ZXIoZGVsaXRvX2NvbSA+IDU3ICYgZGVsaXRvX2NvbSA8IDIyNykNCg0KZHRBZ3JhdmlhZG9zMjMgPC0gcnBhcnQoDQogIGVzdF9jb255dWdhbCB+IGRlbGl0b19jb20gKyBzZXhvX2FncmF2aWFkb3MgKyBlZGFkX2FncmF2ICsgZGVwdG9fb2N1X2hlY2hvDQogICwgZGF0YSA9IHNkQWdyYXZpYWRvcywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdEFncmF2aWFkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIGFncmF2aWFkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KDQojIyMgU2luZGljYWRvcyAyMDIzDQpgYGB7cn0NCg0KY29sbmFtZXMoc2RTaW5kaWNhZG9zMjMpDQoNCnNkU2luZGljYWRvczIzJGVzdF9jb255dWdhbCA8LSBmYWN0b3Ioc2RTaW5kaWNhZG9zMjMkZXN0X2Nvbnl1Z2FsICkNCg0KZHRTaW5kaWNhZG9zMjMgPC0gcnBhcnQoDQogIGVzdF9jb255dWdhbCB+ICBzZXhvX3BlciArIGVkYWRfc2luZCArIGRlcHRvX29jdV9oZWNobyArZGVsaXRvX2NvbQ0KICAsIGRhdGEgPSBzZFNpbmRpY2Fkb3MyMywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdFNpbmRpY2Fkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIHNpbmRpY2FkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KDQojIyMgU2luZGljYWRvcyAyMDIzDQpgYGB7cn0NCg0KY29sbmFtZXMoc2RTaW5kaWNhZG9zMjMpDQoNCnNkU2luZGljYWRvczIzJGVzdF9jb255dWdhbCA8LSBmYWN0b3Ioc2RTaW5kaWNhZG9zMjMkZXN0X2Nvbnl1Z2FsICkNCnNkU2luZGljYWRvczIzJGRlcHRvX29jdV9oZWNobyA8LSBmYWN0b3Ioc2RTaW5kaWNhZG9zMjMkZGVwdG9fb2N1X2hlY2hvKQ0KDQpzZFNpbmRpY2Fkb3MyM18gPC0gc2RTaW5kaWNhZG9zMjMgJT4lDQogIG11dGF0ZSh0ZXJjZXJhZWRhZCA9IGlmZWxzZShlZGFkX3NpbmQgPiA1NSwgMSwgMCkpICU+JQ0KICBmaWx0ZXIoZWRhZF9zaW5kID4gMCkgJT4lDQogIGZpbHRlcihkZWxpdG9fY29tID4gMTgzICYgZGVsaXRvX2NvbSA8IDE4NykNCg0KZHRTaW5kaWNhZG9zMjMgPC0gcnBhcnQoDQogIHRlcmNlcmFlZGFkIH4gICBlc3RfY29ueXVnYWwgKyBzZXhvX3BlciArIGRlbGl0b19jb20gKyBkZXB0b19vY3VfaGVjaG8NCiAgLCBkYXRhID0gc2RTaW5kaWNhZG9zMjNfLCBtZXRob2QgPSAiY2xhc3MiDQopDQoNCnJwYXJ0LnBsb3QoDQogIGR0U2luZGljYWRvczIzLCAgdHlwZSA9IDIsIGV4dHJhID0gMCwgdW5kZXIgPSBUUlVFLCBmYWxsZW4ubGVhdmVzID0gVFJVRSwNCiAgYm94LnBhbGV0dGUgPSAiQnVHbiIsIG1haW49IlByZWRpY2Npw7NuIGRlIGVzdGFkbyBjb255dWdhbCBlbiBmdW5jacOzbiBkZSBsYSBlZGFkIHkgZWwgc2V4byBkZWwgc2luZGljYWRvIiwgY2V4ID0gMC41DQopDQoNCmBgYA0KDQoNCg0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIERlY2lzaW9uIHRyZWUNCkFuw6FsaXNpcyBkZSBsb3MgY29uanVudG9zIGRlIGRhdG9zIHNpbmRpY2Fkb3MgeSBhZ3JhdmlhZG9zLCByZWNvcGlsYWRvcyBwb3IgZWwgTVAgeSBwdWJsaWNhZG9zIG1lZGlhbnRlIGVsIEluc3RpdHV0byBkZSBFc3RhZMOtc3RpY2EgTmFjaW9uYWwgZGUgR3VhdGVtYWxhLiANCg0KUGFyYSBsYSBlamVjdWNpw7NuIGRlIGVzdGEgc2VjY2nDs24gZGVsIGFuw6FsaXNpcyBzZSBkZXNhcnJvbGxhIGVsIGFsZ29yaXRtbyDDoXJib2xlcyBkZSBkZWNpc2nDs24uDQoNCiMjIENhcmdhIGRlIGxpYnJlcsOtYXMgDQpgYGB7cn0NCmxpYnJhcnkocnBhcnQpICMgcGFyYSBjb25zdHJ1Y2Npw7NuIGRlbCDDoXJib2wNCmxpYnJhcnkocnBhcnQucGxvdCkgIyBwYXJhIGdyYWZpY2FyIGVsIMOhcmJvbA0KbGlicmFyeShkcGx5cikgIyBwYXJhIG1hbmlwdWxhciBsb3MgY29uanVudG9zIGRlIGRhdG9zDQpsaWJyYXJ5KHJlYWR4bCkgIyBwYXJhIGxlZXIgbG9zIGFyY2hpdm9zIGV4Y2VsDQpgYGANCg0KDQojIyBDYXJnYSBkZSBsb3MgZGF0b3MNCmBgYHtyfQ0KDQpkQWdyYXZpYWRvc18yMDIwIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIwLnhsc3giLHNoZWV0ID0gIlNoZWV0MSIpDQpkQWdyYXZpYWRvc18yMDIyIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIyLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KDQpkQWdyYXZpYWRvc18yMDIzIDwtIHJlYWRfeGxzeCgiRGF0YVxcQWdyYXZpYWRvcyAyMDIzLnhsc3giLCBzaGVldCA9ICJTaGVldDEiKQ0KZFNpbmRpY2Fkb3NfMjAyMyA8LSByZWFkX3hsc3goIkRhdGFcXFNpbmRpY2Fkb3MgMjAyMy54bHN4Iiwgc2hlZXQgPSAiU2hlZXQxIikNCg0KDQpgYGANCg0KDQojIyBPYnRlbmNpw7NuIGRlIGRpY2Npb25hcmlvcw0KYGBge3J9DQpkaWNBZ3JhdmlhZG9zMjIgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyAyMDIyLnhsc3giLCBzaGVldD0iRGljIikNCmRpY0FncmF2aWFkb3MyMyA8LSByZWFkX3hsc3goIkRhdGFcXERpY2Npb25hcmlvIEFncmF2aWFkb3MgMjAyMy54bHN4Iiwgc2hlZXQ9IkRpYyIpDQpkaWNTaW5kaWNhZG9zMjMgPC0gcmVhZF94bHN4KCJEYXRhXFxEaWNjaW9uYXJpbyBTaW5kaWNhZG9zIDIwMjMueGxzeCIsIHNoZWV0PSJEaWMiKQ0KDQpgYGANCg0KIyMgUHJlcGFyYWNpw7NuIGRlIGxvcyBjb25qdW50b3MgZGUgZGF0b3MNCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQojIEFzaWduYXIgZWwgY29uanVudG8gZGUgZGF0b3MNCnNkQWdyYXZpYWRvczIzIDwtIGRBZ3JhdmlhZG9zXzIwMjMNCg0KIyBNYW5pcHVsYWNpw7NuIGRlbCBjb25qdW50byBwYXJhIGRlbGltaXRhciANCnNkQWdyYXZpYWRvczIzIDwtIHNkQWdyYXZpYWRvczIzICU+JQ0KICBsZWZ0X2pvaW4oZGljQWdyYXZpYWRvczIyLCBieSA9IGMoImRlbGl0b19jb20iPSJFdGlxdWV0YSIpKSAlPiUNCiAgc2VsZWN0KC1kZWxpdG9fY29tLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoZGVsaXRvX2NvbSA9IEPDs2RpZ28pICU+JQ0KICBsZWZ0X2pvaW4oZGljQWdyYXZpYWRvczIzW2RpY0FncmF2aWFkb3MyMyRWYWxvciA9PSAiREVQQVJUQU1FTlRPIERFIE9DVVJSRU5DSUEgREVMIEhFQ0hPIixdLCBieSA9IGMoImRlcHRvX29jdV9oZWNobyIgPSJFdGlxdWV0YSIpKSAlPiUNCiAgc2VsZWN0KC1kZXB0b19vY3VfaGVjaG8sIC1WYWxvcikgJT4lDQogIHJlbmFtZShkZXB0b19vY3VfaGVjaG8gPSBDw7NkaWdvKQ0KDQpzZEFncmF2aWFkb3MyMyA8LSBzZEFncmF2aWFkb3MyMyAlPiUNCiAgbGVmdF9qb2luKGRpY0FncmF2aWFkb3MyMywgYnkgPSBjKCJzZXhvX2FncmF2aWFkb3MiID0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtc2V4b19hZ3JhdmlhZG9zLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoc2V4b19hZ3JhdmlhZG9zID0gQ8OzZGlnbykNCg0KDQpzZEFncmF2aWFkb3MyMyA8LSBzZEFncmF2aWFkb3MyMyAlPiUNCiAgbGVmdF9qb2luKGRpY0FncmF2aWFkb3MyMywgYnkgPSBjKCJlc3RfY29ueXVnYWwiID0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZXN0X2Nvbnl1Z2FsLCAtVmFsb3IpICU+JQ0KICByZW5hbWUoZXN0X2Nvbnl1Z2FsID0gQ8OzZGlnbykNCiAgICAgICAgICAgIA0KYGBgDQoNCiMjIyBTaW5kaWNhZG9zIDIwMjMNCmBgYHtyfQ0KY29sbmFtZXMoZFNpbmRpY2Fkb3NfMjAyMykNCg0KIyBBc2lnbmFyIGVsIGNvbmp1bnRvIGRlIGRhdG9zDQpzZFNpbmRpY2Fkb3MyMyA8LSBkU2luZGljYWRvc18yMDIzDQoNCiMgTWFuaXB1bGFjacOzbiBkZWwgY29uanVudG8NCnNkU2luZGljYWRvczIzIDwtIHNkU2luZGljYWRvczIzICU+JQ0KICBsZWZ0X2pvaW4oZGljU2luZGljYWRvczIzLCBieT1jKCJkZWxpdG9fY29tIj0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZGVsaXRvX2NvbSwgLSBWYWxvcikgJT4lDQogIHJlbmFtZShkZWxpdG9fY29tID0gQ8OzZGlnbykNCg0Kc2RTaW5kaWNhZG9zMjMgPC0gc2RTaW5kaWNhZG9zMjMgJT4lDQogIGxlZnRfam9pbihkaWNTaW5kaWNhZG9zMjMsIGJ5PWMoInNleG9fcGVyIj0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtc2V4b19wZXIsIC0gVmFsb3IpICU+JQ0KICByZW5hbWUoc2V4b19wZXIgPSBDw7NkaWdvKQ0KDQoNCnNkU2luZGljYWRvczIzIDwtIHNkU2luZGljYWRvczIzICU+JQ0KICBsZWZ0X2pvaW4oZGljU2luZGljYWRvczIzLCBieT1jKCJlc3RfY29ueXVnYWwiPSJFdGlxdWV0YSIpKSAlPiUNCiAgc2VsZWN0KC1lc3RfY29ueXVnYWwsIC0gVmFsb3IpICU+JQ0KICByZW5hbWUoZXN0X2Nvbnl1Z2FsID0gQ8OzZGlnbykNCg0KDQpzZFNpbmRpY2Fkb3MyMyA8LSBzZFNpbmRpY2Fkb3MyMyAlPiUNCiAgbGVmdF9qb2luKGRpY1NpbmRpY2Fkb3MyMywgYnk9YygiZGVwdG9fb2N1X2hlY2hvIj0iRXRpcXVldGEiKSkgJT4lDQogIHNlbGVjdCgtZGVwdG9fb2N1X2hlY2hvLCAtIFZhbG9yKSAlPiUNCiAgcmVuYW1lKGRlcHRvX29jdV9oZWNobyA9IEPDs2RpZ28pDQoNCg0KYGBgDQoNCg0KIyMgRWplY3VjacOzbiBkZSBhbGdvcml0bW8NCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkQWdyYXZpYWRvczIzKQ0KDQpkdEFncmF2aWFkb3MyMyA8LSBycGFydCgNCiAgc2V4b19hZ3JhdmlhZG9zIH4gZGVsaXRvX2NvbSArIGVzdF9jb255dWdhbCArIGVkYWRfYWdyYXYgKyBkZXB0b19vY3VfaGVjaG8NCiAgLCBkYXRhID0gc2RBZ3JhdmlhZG9zMjMsIG1ldGhvZCA9ICJjbGFzcyINCikNCg0KcnBhcnQucGxvdCgNCiAgZHRBZ3JhdmlhZG9zMjMsICB0eXBlID0gMiwgZXh0cmEgPSAwLCB1bmRlciA9IFRSVUUsIGZhbGxlbi5sZWF2ZXMgPSBUUlVFLA0KICBib3gucGFsZXR0ZSA9ICJCdUduIiwgbWFpbj0iUHJlZGljY2nDs24gZGUgc2V4byBlbiBmdW5jacOzbiBkZWwgZGVsaXRvIGNvbWV0aWRvIiwgY2V4ID0gMC41DQopDQoNCmBgYA0KDQojIyMjIFByZWRpY2Npw7NuIDAxDQpgYGB7cn0NCiMgc2V4b19hZ3JhdmlhZG9zIH4gZGVsaXRvX2NvbSArIGVzdF9jb255dWdhbCArIGVkYWRfYWdyYXYgKyBkZXB0b19vY3VfaGVjaG8NCg0KIyBudWV2b3MgZGF0b3MNCmRhdG9fMDEgPC0gZGF0YS5mcmFtZSgNCiAgZGVsaXRvX2NvbSA9IDgzLA0KICBlc3RfY29ueXVnYWwgPSAxLA0KICBlZGFkX2FncmF2ID0gMjIsDQogIGRlcHRvX29jdV9oZWNobyA9IDENCikNCg0KcmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDEsdHlwZT0iY2xhc3MiKQ0KDQpyZXN1bHRhZG8NCg0KIyBkYXRvcyBudWV2b3MNCmRhdG9fMDIgPC0gZGF0YS5mcmFtZSgNCiAgZGVsaXRvX2NvbSA9IDUsDQogIGVzdF9jb255dWdhbCA9IDIsDQogIGVkYWRfYWdyYXYgPSAyMiwNCiAgZGVwdG9fb2N1X2hlY2hvID0gMQ0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMix0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQojIGRhdG9zIG51ZXZvcw0KZGF0b18wMSA8LSBkYXRhLmZyYW1lKA0KICBkZWxpdG9fY29tID0gOTAsDQogIGVzdF9jb255dWdhbCA9IDEsDQogIGVkYWRfYWdyYXYgPSAyMiwNCiAgZGVwdG9fb2N1X2hlY2hvID0gMQ0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdEFncmF2aWFkb3MyMywgZGF0b18wMSx0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQpgYGANCg0KDQoNCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkQWdyYXZpYWRvczIzKQ0KDQpzZEFncmF2aWFkb3MyMyRlc3RfY29ueXVnYWwgPC0gZmFjdG9yKHNkQWdyYXZpYWRvczIzJGVzdF9jb255dWdhbCApDQoNCmR0QWdyYXZpYWRvczIzIDwtIHJwYXJ0KA0KICBlc3RfY29ueXVnYWwgfiBkZWxpdG9fY29tICsgc2V4b19hZ3JhdmlhZG9zICsgZWRhZF9hZ3JhdiArIGRlcHRvX29jdV9oZWNobw0KICAsIGRhdGEgPSBzZEFncmF2aWFkb3MyMywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdEFncmF2aWFkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIGFncmF2aWFkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KIyMjIyBQcmVkaWNjacOzbiAwMg0KYGBge3J9DQojIGVzdF9jb255dWdhbCB+IGRlbGl0b19jb20gKyBzZXhvX2FncmF2aWFkb3MgKyBlZGFkX2FncmF2ICsgZGVwdG9fb2N1X2hlY2hvDQoNCiMgbnVldm9zIGRhdG9zDQpkYXRvXzAxIDwtIGRhdGEuZnJhbWUoDQogIGRlbGl0b19jb20gPSAxMiwNCiAgc2V4b19hZ3JhdmlhZG9zID0gMSwNCiAgZWRhZF9hZ3JhdiA9IDIyLA0KICBkZXB0b19vY3VfaGVjaG8gPSAxDQopDQoNCnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0QWdyYXZpYWRvczIzLCBkYXRvXzAxLHR5cGU9ImNsYXNzIikNCg0KcmVzdWx0YWRvDQoNCiMgZGF0b3MgbnVldm9zDQpkYXRvXzAyIDwtIGRhdGEuZnJhbWUoDQogIGRlbGl0b19jb20gPSA1LA0KICBzZXhvX2FncmF2aWFkb3MgPSAxLA0KICBlZGFkX2FncmF2ID0gMzUsDQogIGRlcHRvX29jdV9oZWNobyA9IDENCikNCg0KcmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDIsdHlwZT0iY2xhc3MiKQ0KDQpyZXN1bHRhZG8NCg0KIyBkYXRvcyBudWV2b3MNCmRhdG9fMDEgPC0gZGF0YS5mcmFtZSgNCiAgZGVsaXRvX2NvbSA9IDkwLA0KICBzZXhvX2FncmF2aWFkb3MgPSAyLA0KICBlZGFkX2FncmF2ID0gMjIsDQogIGRlcHRvX29jdV9oZWNobyA9IDENCikNCg0KcmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDEsdHlwZT0iY2xhc3MiKQ0KDQpyZXN1bHRhZG8NCg0KDQpgYGANCg0KDQoNCg0KIyMjIEFncmF2aWFkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkQWdyYXZpYWRvczIzKQ0KDQpzZEFncmF2aWFkb3MyMyRlc3RfY29ueXVnYWwgPC0gZmFjdG9yKHNkQWdyYXZpYWRvczIzJGVzdF9jb255dWdhbCApDQoNCnNkQWdyYXZpYWRvcyA8LSBzZEFncmF2aWFkb3MyMw0KDQpzZEFncmF2aWFkb3MgPC0gc2RBZ3JhdmlhZG9zICU+JQ0KICBmaWx0ZXIoZGVsaXRvX2NvbSA+IDU3ICYgZGVsaXRvX2NvbSA8IDIyNykNCg0KZHRBZ3JhdmlhZG9zMjMgPC0gcnBhcnQoDQogIGVzdF9jb255dWdhbCB+IGRlbGl0b19jb20gKyBzZXhvX2FncmF2aWFkb3MgKyBlZGFkX2FncmF2ICsgZGVwdG9fb2N1X2hlY2hvDQogICwgZGF0YSA9IHNkQWdyYXZpYWRvcywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdEFncmF2aWFkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIGFncmF2aWFkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KIyMjIyBQcmVkaWNjacOzbiAwMw0KYGBge3J9DQojIGVzdF9jb255dWdhbCB+IGRlbGl0b19jb20gKyBzZXhvX2FncmF2aWFkb3MgKyBlZGFkX2FncmF2ICsgZGVwdG9fb2N1X2hlY2hvDQoNCiMgbnVldm9zIGRhdG9zDQpkYXRvXzAxIDwtIGRhdGEuZnJhbWUoDQogIGRlbGl0b19jb20gPSAxMiwNCiAgc2V4b19hZ3JhdmlhZG9zID0gMSwNCiAgZWRhZF9hZ3JhdiA9IDIyLA0KICBkZXB0b19vY3VfaGVjaG8gPSAxDQopDQoNCnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0QWdyYXZpYWRvczIzLCBkYXRvXzAxLHR5cGU9ImNsYXNzIikNCg0KcmVzdWx0YWRvDQoNCiMgZGF0b3MgbnVldm9zDQpkYXRvXzAyIDwtIGRhdGEuZnJhbWUoDQogIGRlbGl0b19jb20gPSA1LA0KICBzZXhvX2FncmF2aWFkb3MgPSAxLA0KICBlZGFkX2FncmF2ID0gMzUsDQogIGRlcHRvX29jdV9oZWNobyA9IDENCikNCg0KcmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDIsdHlwZT0iY2xhc3MiKQ0KDQpyZXN1bHRhZG8NCg0KIyBkYXRvcyBudWV2b3MNCmRhdG9fMDEgPC0gZGF0YS5mcmFtZSgNCiAgZGVsaXRvX2NvbSA9IDkwLA0KICBzZXhvX2FncmF2aWFkb3MgPSAyLA0KICBlZGFkX2FncmF2ID0gMjIsDQogIGRlcHRvX29jdV9oZWNobyA9IDENCikNCg0KcmVzdWx0YWRvIDwtIHByZWRpY3QoZHRBZ3JhdmlhZG9zMjMsIGRhdG9fMDEsdHlwZT0iY2xhc3MiKQ0KDQpyZXN1bHRhZG8NCg0KDQpgYGANCg0KDQojIyMgU2luZGljYWRvcyAyMDIzDQpgYGB7cn0NCg0KY29sbmFtZXMoc2RTaW5kaWNhZG9zMjMpDQoNCnNkU2luZGljYWRvczIzJGVzdF9jb255dWdhbCA8LSBmYWN0b3Ioc2RTaW5kaWNhZG9zMjMkZXN0X2Nvbnl1Z2FsICkNCg0KZHRTaW5kaWNhZG9zMjMgPC0gcnBhcnQoDQogIGVzdF9jb255dWdhbCB+ICBzZXhvX3BlciArIGVkYWRfc2luZCArIGRlcHRvX29jdV9oZWNobyArZGVsaXRvX2NvbQ0KICAsIGRhdGEgPSBzZFNpbmRpY2Fkb3MyMywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdFNpbmRpY2Fkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIHNpbmRpY2FkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KDQojIyMjIFByZWRpY2Npw7NuIDA0DQpgYGB7cn0NCiMgZXN0X2Nvbnl1Z2FsIH4gIHNleG9fcGVyICsgZWRhZF9zaW5kICsgZGVwdG9fb2N1X2hlY2hvICtkZWxpdG9fY29tDQoNCiMgbnVldm9zIGRhdG9zDQpkYXRvXzAxIDwtIGRhdGEuZnJhbWUoDQogIGRlbGl0b19jb20gPSAxMiwNCiAgc2V4b19wZXIgPSAxLA0KICBlZGFkX3NpbmQgPSAyMiwNCiAgZGVwdG9fb2N1X2hlY2hvID0gMQ0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdFNpbmRpY2Fkb3MyMywgZGF0b18wMSx0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQojIGRhdG9zIG51ZXZvcw0KZGF0b18wMiA8LSBkYXRhLmZyYW1lKA0KICBkZWxpdG9fY29tID0gNSwNCiAgc2V4b19wZXIgPSAxLA0KICBlZGFkX3NpbmQgPSAzNSwNCiAgZGVwdG9fb2N1X2hlY2hvID0gMQ0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdFNpbmRpY2Fkb3MyMywgZGF0b18wMix0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQojIGRhdG9zIG51ZXZvcw0KZGF0b18wMSA8LSBkYXRhLmZyYW1lKA0KICBkZWxpdG9fY29tID0gOTAsDQogIHNleG9fcGVyID0gMiwNCiAgZWRhZF9zaW5kID0gMzcsDQogIGRlcHRvX29jdV9oZWNobyA9IDENCikNCg0KcmVzdWx0YWRvIDwtIHByZWRpY3QoZHRTaW5kaWNhZG9zMjMsIGRhdG9fMDEsdHlwZT0iY2xhc3MiKQ0KDQpyZXN1bHRhZG8NCg0KIyBkYXRvcyBudWV2b3MNCmRhdG9fMDEgPC0gZGF0YS5mcmFtZSgNCiAgZGVsaXRvX2NvbSA9IDkwLA0KICBzZXhvX3BlciA9IDIsDQogIGVkYWRfc2luZCA9IDQ1LA0KICBkZXB0b19vY3VfaGVjaG8gPSAxDQopDQoNCnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAxLHR5cGU9ImNsYXNzIikNCg0KcmVzdWx0YWRvDQoNCg0KYGBgDQoNCg0KIyMjIFNpbmRpY2Fkb3MgMjAyMw0KYGBge3J9DQoNCmNvbG5hbWVzKHNkU2luZGljYWRvczIzKQ0KDQpzZFNpbmRpY2Fkb3MyMyRlc3RfY29ueXVnYWwgPC0gZmFjdG9yKHNkU2luZGljYWRvczIzJGVzdF9jb255dWdhbCApDQpzZFNpbmRpY2Fkb3MyMyRkZXB0b19vY3VfaGVjaG8gPC0gZmFjdG9yKHNkU2luZGljYWRvczIzJGRlcHRvX29jdV9oZWNobykNCg0Kc2RTaW5kaWNhZG9zMjNfIDwtIHNkU2luZGljYWRvczIzICU+JQ0KICBtdXRhdGUodGVyY2VyYWVkYWQgPSBpZmVsc2UoZWRhZF9zaW5kID4gNTUsIDEsIDApKSAlPiUNCiAgZmlsdGVyKGVkYWRfc2luZCA+IDApICU+JQ0KICBmaWx0ZXIoZGVsaXRvX2NvbSA+IDE4MyAmIGRlbGl0b19jb20gPCAxODcpDQoNCmR0U2luZGljYWRvczIzIDwtIHJwYXJ0KA0KICB0ZXJjZXJhZWRhZCB+ICAgZXN0X2Nvbnl1Z2FsICsgc2V4b19wZXIgKyBkZWxpdG9fY29tICsgZGVwdG9fb2N1X2hlY2hvDQogICwgZGF0YSA9IHNkU2luZGljYWRvczIzXywgbWV0aG9kID0gImNsYXNzIg0KKQ0KDQpycGFydC5wbG90KA0KICBkdFNpbmRpY2Fkb3MyMywgIHR5cGUgPSAyLCBleHRyYSA9IDAsIHVuZGVyID0gVFJVRSwgZmFsbGVuLmxlYXZlcyA9IFRSVUUsDQogIGJveC5wYWxldHRlID0gIkJ1R24iLCBtYWluPSJQcmVkaWNjacOzbiBkZSBlc3RhZG8gY29ueXVnYWwgZW4gZnVuY2nDs24gZGUgbGEgZWRhZCB5IGVsIHNleG8gZGVsIHNpbmRpY2FkbyIsIGNleCA9IDAuNQ0KKQ0KDQpgYGANCg0KIyMjIyBQcmVkaWNjacOzbiAwNQ0KYGBge3J9DQojIHRlcmNlcmFlZGFkIH4gICBlc3RfY29ueXVnYWwgKyBzZXhvX3BlciArIGRlbGl0b19jb20gKyBkZXB0b19vY3VfaGVjaG8NCg0KIyBudWV2b3MgZGF0b3MNCmRhdG9fMDEgPC0gZGF0YS5mcmFtZSgNCiAgZGVsaXRvX2NvbSA9IDMyMCwNCiAgc2V4b19wZXIgPSAxLA0KICBlc3RfY29ueXVnYWwgPSAiMiIsDQogIGRlcHRvX29jdV9oZWNobyA9ICIxIg0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdFNpbmRpY2Fkb3MyMywgZGF0b18wMSx0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQojIGRhdG9zIG51ZXZvcw0KZGF0b18wMiA8LSBkYXRhLmZyYW1lKA0KICBkZWxpdG9fY29tID0gMjQwLA0KICBzZXhvX3BlciA9IDEsDQogIGVzdF9jb255dWdhbCA9ICIxIiwNCiAgZGVwdG9fb2N1X2hlY2hvID0gIjEiDQopDQoNCnJlc3VsdGFkbyA8LSBwcmVkaWN0KGR0U2luZGljYWRvczIzLCBkYXRvXzAyLHR5cGU9ImNsYXNzIikNCg0KcmVzdWx0YWRvDQoNCiMgZGF0b3MgbnVldm9zDQpkYXRvXzAxIDwtIGRhdGEuZnJhbWUoDQogIGRlbGl0b19jb20gPSA5MCwNCiAgc2V4b19wZXIgPSAyLA0KICBlc3RfY29ueXVnYWwgPSAiMyIsDQogIGRlcHRvX29jdV9oZWNobyA9ICIxIg0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdFNpbmRpY2Fkb3MyMywgZGF0b18wMSx0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQojIGRhdG9zIG51ZXZvcw0KZGF0b18wMSA8LSBkYXRhLmZyYW1lKA0KICBkZWxpdG9fY29tID0gMzUwLA0KICBzZXhvX3BlciA9IDIsDQogIGVzdF9jb255dWdhbCA9ICI0IiwNCiAgZGVwdG9fb2N1X2hlY2hvID0gIjIxIg0KKQ0KDQpyZXN1bHRhZG8gPC0gcHJlZGljdChkdFNpbmRpY2Fkb3MyMywgZGF0b18wMSx0eXBlPSJjbGFzcyIpDQoNCnJlc3VsdGFkbw0KDQoNCmBgYA0KDQoNCg0K</div>
 
 
 

@@ -120,6 +120,49 @@ rpart.plot(
 
 ```
 
+#### Predicción 01
+```{r}
+# sexo_agraviados ~ delito_com + est_conyugal + edad_agrav + depto_ocu_hecho
+
+# nuevos datos
+dato_01 <- data.frame(
+  delito_com = 83,
+  est_conyugal = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_02 <- data.frame(
+  delito_com = 5,
+  est_conyugal = 2,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_02,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 90,
+  est_conyugal = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_01,type="class")
+
+resultado
+
+```
+
+
 
 
 ### Agraviados 2023
@@ -140,6 +183,52 @@ rpart.plot(
 )
 
 ```
+
+#### Predicción 02
+```{r}
+# est_conyugal ~ delito_com + sexo_agraviados + edad_agrav + depto_ocu_hecho
+
+# nuevos datos
+dato_01 <- data.frame(
+  delito_com = 12,
+  sexo_agraviados = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_02 <- data.frame(
+  delito_com = 5,
+  sexo_agraviados = 1,
+  edad_agrav = 35,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_02,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 90,
+  sexo_agraviados = 2,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_01,type="class")
+
+resultado
+
+
+```
+
+
+
 
 ### Agraviados 2023
 ```{r}
@@ -165,6 +254,49 @@ rpart.plot(
 
 ```
 
+#### Predicción 03
+```{r}
+# est_conyugal ~ delito_com + sexo_agraviados + edad_agrav + depto_ocu_hecho
+
+# nuevos datos
+dato_01 <- data.frame(
+  delito_com = 12,
+  sexo_agraviados = 1,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_02 <- data.frame(
+  delito_com = 5,
+  sexo_agraviados = 1,
+  edad_agrav = 35,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_02,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 90,
+  sexo_agraviados = 2,
+  edad_agrav = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtAgraviados23, dato_01,type="class")
+
+resultado
+
+
+```
+
 
 ### Sindicados 2023
 ```{r}
@@ -182,6 +314,62 @@ rpart.plot(
   dtSindicados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
   box.palette = "BuGn", main="Predicción de estado conyugal en función de la edad y el sexo del sindicado", cex = 0.5
 )
+
+```
+
+
+#### Predicción 04
+```{r}
+# est_conyugal ~  sexo_per + edad_sind + depto_ocu_hecho +delito_com
+
+# nuevos datos
+dato_01 <- data.frame(
+  delito_com = 12,
+  sexo_per = 1,
+  edad_sind = 22,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtSindicados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_02 <- data.frame(
+  delito_com = 5,
+  sexo_per = 1,
+  edad_sind = 35,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtSindicados23, dato_02,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 90,
+  sexo_per = 2,
+  edad_sind = 37,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtSindicados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 90,
+  sexo_per = 2,
+  edad_sind = 45,
+  depto_ocu_hecho = 1
+)
+
+resultado <- predict(dtSindicados23, dato_01,type="class")
+
+resultado
+
 
 ```
 
@@ -211,7 +399,60 @@ rpart.plot(
 
 ```
 
+#### Predicción 05
+```{r}
+# terceraedad ~   est_conyugal + sexo_per + delito_com + depto_ocu_hecho
 
+# nuevos datos
+dato_01 <- data.frame(
+  delito_com = 320,
+  sexo_per = 1,
+  est_conyugal = "2",
+  depto_ocu_hecho = "1"
+)
+
+resultado <- predict(dtSindicados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_02 <- data.frame(
+  delito_com = 240,
+  sexo_per = 1,
+  est_conyugal = "1",
+  depto_ocu_hecho = "1"
+)
+
+resultado <- predict(dtSindicados23, dato_02,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 90,
+  sexo_per = 2,
+  est_conyugal = "3",
+  depto_ocu_hecho = "1"
+)
+
+resultado <- predict(dtSindicados23, dato_01,type="class")
+
+resultado
+
+# datos nuevos
+dato_01 <- data.frame(
+  delito_com = 350,
+  sexo_per = 2,
+  est_conyugal = "4",
+  depto_ocu_hecho = "21"
+)
+
+resultado <- predict(dtSindicados23, dato_01,type="class")
+
+resultado
+
+
+```
 
 
 

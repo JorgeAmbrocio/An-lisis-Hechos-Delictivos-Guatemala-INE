@@ -174,6 +174,31 @@ plot(bosque)
 
 ```
 
+### Predicción 01
+```{r}
+# edad_agrav + principales_delitos + sexo_agraviados
+
+dato_01 <- data.frame(
+  edad_agrav=30,
+  principales_delitos="178",
+  sexo_agraviados="2"
+)
+
+# Asegúrate de que los niveles de las variables coincidan
+dato_01$sexo_agraviados <- factor(dato_01$sexo_agraviados, levels = levels(pruebas$sexo_agraviados))
+
+# Si 'principales_delitos' es un factor, ajusta los niveles
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+```
+
+
+
+
 ## Sexo agraviados
 ```{r}
 
@@ -223,6 +248,69 @@ print(matriz)
 plot(bosque)
 
 ```
+
+
+### Predicción 02
+```{r}
+# principales_delitos + est_conyugal + depto_ocu_hecho,
+
+dato_01 <- data.frame(
+  est_conyugal=3,
+  principales_delitos="57",
+  depto_ocu_hecho=10
+)
+
+# Mostrar factores
+str(pruebas$principales_delitos)
+str(pruebas$depto_ocu_hecho)
+
+
+# hacer que niveles de las variables coincidan
+dato_01$est_conyugal <- factor(dato_01$est_conyugal, levels = levels(pruebas$est_conyugal))
+
+# hacer que niveles de las variables coincidan
+dato_01$depto_ocu_hecho <- factor(dato_01$depto_ocu_hecho, levels = levels(pruebas$depto_ocu_hecho))
+
+
+# ajustera niveles de las variables 
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+
+
+
+# principales_delitos + est_conyugal + depto_ocu_hecho,
+
+dato_01 <- data.frame(
+  est_conyugal=1,
+  principales_delitos="154",
+  depto_ocu_hecho=5
+)
+
+# Mostrar factores
+str(pruebas$principales_delitos)
+str(pruebas$depto_ocu_hecho)
+
+
+# hacer que niveles de las variables coincidan
+dato_01$est_conyugal <- factor(dato_01$est_conyugal, levels = levels(pruebas$est_conyugal))
+
+# hacer que niveles de las variables coincidan
+dato_01$depto_ocu_hecho <- factor(dato_01$depto_ocu_hecho, levels = levels(pruebas$depto_ocu_hecho))
+
+
+# ajustera niveles de las variables 
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+```
+
 
 
 ## Estado conyugal del sindicado
@@ -280,6 +368,55 @@ plot(bosque)
 ```
 
 
+### Predicción 03
+```{r}
+# principales_delitos + sexo_per + depto_ocu_hecho + edad_sind,
+
+dato_01 <- data.frame(
+  edad_sind=30,
+  principales_delitos="Coacción",
+  sexo_per="2",
+  depto_ocu_hecho="5"
+)
+
+# Mostrar factores
+str(pruebas$principales_delitos)
+
+# coincidir niveles de variables
+dato_01$sexo_per <- factor(dato_01$sexo_per, levels = levels(pruebas$sexo_per))
+
+dato_01$depto_ocu_hecho <- factor(dato_01$depto_ocu_hecho, levels = levels(pruebas$depto_ocu_hecho))
+
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+
+
+dato_01 <- data.frame(
+  edad_sind=28,
+  principales_delitos="Lesiones leves",
+  sexo_per="2",
+  depto_ocu_hecho="1"
+)
+
+# Mostrar factores
+levels(pruebas$principales_delitos)
+
+# coincidir niveles de variables
+dato_01$sexo_per <- factor(dato_01$sexo_per, levels = levels(pruebas$sexo_per))
+
+dato_01$depto_ocu_hecho <- factor(dato_01$depto_ocu_hecho, levels = levels(pruebas$depto_ocu_hecho))
+
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+```
 
 
 ## Sexo sindicados
@@ -336,7 +473,54 @@ plot(bosque)
 ```
 
 
+### Predicción 04
+```{r}
+# principales_delitos + est_conyugal + depto_ocu_hecho,
 
+dato_01 <- data.frame(
+  principales_delitos="Coacción",
+  est_conyugal="2",
+  depto_ocu_hecho="5"
+)
+
+# Mostrar factores
+str(pruebas$principales_delitos)
+
+# coincidir niveles de variables
+dato_01$est_conyugal<- factor(dato_01$est_conyugal, levels = levels(pruebas$est_conyugal))
+
+dato_01$depto_ocu_hecho <- factor(dato_01$depto_ocu_hecho, levels = levels(pruebas$depto_ocu_hecho))
+
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+
+
+dato_01 <- data.frame(
+  edad_sind=28,
+  principales_delitos="Robo",
+  est_conyugal="2",
+  depto_ocu_hecho="1"
+)
+
+# Mostrar factores
+levels(pruebas$principales_delitos)
+
+# coincidir niveles de variables
+dato_01$est_conyugal <- factor(dato_01$est_conyugal, levels = levels(pruebas$est_conyugal))
+
+dato_01$depto_ocu_hecho <- factor(dato_01$depto_ocu_hecho, levels = levels(pruebas$depto_ocu_hecho))
+
+dato_01$principales_delitos <- factor(dato_01$principales_delitos, levels = levels(pruebas$principales_delitos))
+
+# Predicción
+prediccion <- predict(bosque, dato_01)
+prediccion
+
+```
 
 
 
