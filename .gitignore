@@ -4,6 +4,8 @@
 
 /Data
 
+.venv
+
 # Session Data files
 .RData
 .RDataTmp

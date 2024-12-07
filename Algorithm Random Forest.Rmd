@@ -8,20 +8,26 @@ Análisis de los conjuntos de datos sindicados y agraviados, recopilados por el 
 
 Para la ejecución de esta sección del análisis se desarrolla el algoritmo bosque aleatorio.
 
+```{r}
+install.packages("randomForest")
+```
+
+
 ## Carga de librerías 
 ```{r}
 library(rpart) # para construcción del árbol
 library(rpart.plot) # para graficar el árbol
 library(dplyr) # para manipular los conjuntos de datos
 library(readxl) # para leer los archivos excel
+library(randomForest) # Paracrear el árbol aleatorio
 ```
 
 
 ## Carga de los datos
 ```{r}
 
-dAgraviados_2020 <- read_xlsx("Data\\Agraviados 2020.xlsx",sheet = "Sheet1")
-dAgraviados_2022 <- read_xlsx("Data\\Agraviados 2022.xlsx", sheet = "Sheet1")
+#dAgraviados_2020 <- read_xlsx("Data\\Agraviados 2020.xlsx",sheet = "Sheet1")
+#dAgraviados_2022 <- read_xlsx("Data\\Agraviados 2022.xlsx", sheet = "Sheet1")
 
 dAgraviados_2023 <- read_xlsx("Data\\Agraviados 2023.xlsx", sheet = "Sheet1")
 dSindicados_2023 <- read_xlsx("Data\\Sindicados 2023.xlsx", sheet = "Sheet1")
@@ -64,6 +70,17 @@ sdAgraviados23 <- sdAgraviados23 %>%
   left_join(dicAgraviados23, by = c("est_conyugal" ="Etiqueta")) %>%
   select(-est_conyugal, -Valor) %>%
   rename(est_conyugal = Código)
+
+sdAgraviados23 <- sdAgraviados23 %>%
+  left_join(dicAgraviados23, by=c("principales_delitos"="Etiqueta")) %>%
+  select(-principales_delitos, -Valor) %>%
+  rename(principales_delitos = Código)
+
+sdAgraviados23 <- sdAgraviados23 %>%
+  left_join(dicAgraviados23, by=c("g_edad_60ymás"="Etiqueta")) %>%
+  select(-g_edad_60ymás, -Valor) %>%
+  rename(g_edad_60ymás = Código)
+
             
 ```
 
@@ -99,3 +116,276 @@ sdSindicados23 <- sdSindicados23 %>%
 
 
 ```
+
+## Ejecución del algoritmo
+## Conjunto de datos Agraviados 2023
+```{r}
+
+sdAgraviados23_ <- sdAgraviados23
+
+sdAgraviados23_ <- na.omit(sdAgraviados23_)
+
+sdAgraviados23_$delito_com <- factor(sdAgraviados23_$delito_com)
+sdAgraviados23_$depto_ocu_hecho <- factor(sdAgraviados23_$depto_ocu_hecho)
+sdAgraviados23_$sexo_agraviados <- factor(sdAgraviados23_$sexo_agraviados)
+sdAgraviados23_$est_conyugal <- factor(sdAgraviados23_$est_conyugal)
+sdAgraviados23_$principales_delitos <- factor(sdAgraviados23_$principales_delitos)
+
+sdAgraviados23_ <- sdAgraviados23_ %>%
+  filter(edad_agrav != -99 )
+
+
+# Desordenar los datos
+set.seed(31416)
+sdAgraviados23_ <- sdAgraviados23_[sample(1:nrow(sdAgraviados23_)),]
+
+# Obtener listado de filas para usar como test para la separación
+filas_entrenamiento <- sample(1:nrow(sdAgraviados23_),0.8*nrow(sdAgraviados23_))
+
+# Separar conjunto
+entrenamiento <- sdAgraviados23_[filas_entrenamiento,]
+pruebas <- sdAgraviados23_[-filas_entrenamiento,]
+
+
+```
+
+
+## Estado conyugal agraviados
+```{r}
+
+# Predicción de estado conyugal
+bosque <- randomForest(
+  est_conyugal ~ 
+    edad_agrav + principales_delitos + sexo_agraviados ,
+  data = entrenamiento,
+  ntree = 40,
+  mtry = 10
+)
+
+prediccion = predict(bosque, pruebas)
+
+matriz = table(pruebas$est_conyugal, prediccion)
+
+pre <- sum(diag(matriz)) / sum(matriz)
+pre
+
+print(matriz)
+plot(bosque)
+
+```
+
+## Sexo agraviados
+```{r}
+
+sdAgraviados23_ <- sdAgraviados23
+
+sdAgraviados23_ <- na.omit(sdAgraviados23_)
+
+sdAgraviados23_$delito_com <- factor(sdAgraviados23_$delito_com)
+sdAgraviados23_$depto_ocu_hecho <- factor(sdAgraviados23_$depto_ocu_hecho)
+sdAgraviados23_$sexo_agraviados <- factor(sdAgraviados23_$sexo_agraviados)
+sdAgraviados23_$est_conyugal <- factor(sdAgraviados23_$est_conyugal)
+sdAgraviados23_$principales_delitos <- factor(sdAgraviados23_$principales_delitos)
+
+sdAgraviados23_ <- sdAgraviados23_ %>%
+  filter(edad_agrav != -99 )
+
+
+# Desordenar los datos
+set.seed(31416)
+sdAgraviados23_ <- sdAgraviados23_[sample(1:nrow(sdAgraviados23_)),]
+
+# Obtener listado de filas para usar como test para la separación
+filas_entrenamiento <- sample(1:nrow(sdAgraviados23_),0.8*nrow(sdAgraviados23_))
+
+# Separar conjunto
+entrenamiento <- sdAgraviados23_[filas_entrenamiento,]
+pruebas <- sdAgraviados23_[-filas_entrenamiento,]
+
+
+# Predicción de estado conyugal
+bosque <- randomForest(
+  sexo_agraviados ~ 
+     principales_delitos + est_conyugal + depto_ocu_hecho,
+  data = entrenamiento,
+  ntree = 100,
+  mtry = 5
+)
+
+prediccion = predict(bosque, pruebas)
+
+matriz = table(pruebas$sexo_agraviados, prediccion)
+
+pre <- sum(diag(matriz)) / sum(matriz)
+pre
+
+print(matriz)
+plot(bosque)
+
+```
+
+
+## Estado conyugal del sindicado
+## Estado conyugal sindicados
+```{r}
+
+sdSindicados23_ <- sdSindicados23
+
+sdSindicados23_ <- na.omit(sdSindicados23_)
+
+sdSindicados23_$delito_com <- factor(sdSindicados23_$delito_com)
+sdSindicados23_$depto_ocu_hecho <- factor(sdSindicados23_$depto_ocu_hecho)
+sdSindicados23_$sexo_per <- factor(sdSindicados23_$sexo_per)
+sdSindicados23_$est_conyugal <- factor(sdSindicados23_$est_conyugal)
+sdSindicados23_$principales_delitos <- factor(sdSindicados23_$principales_delitos)
+
+sdSindicados23_ <- sdSindicados23_ %>%
+  filter(edad_sind != -99 )
+
+
+# Desordenar los datos
+set.seed(31416)
+sdSindicados23_ <- sdSindicados23_[sample(1:nrow(sdSindicados23_)),]
+
+# Obtener listado de filas para usar como test para la separación
+filas_entrenamiento <- sample(1:nrow(sdSindicados23_),0.8*nrow(sdSindicados23_))
+
+# Separar conjunto
+entrenamiento <- sdSindicados23_[filas_entrenamiento,]
+pruebas <- sdSindicados23_[-filas_entrenamiento,]
+
+
+# Predicción de estado conyugal
+bosque <- randomForest(
+  est_conyugal ~ 
+     principales_delitos + sexo_per + depto_ocu_hecho + edad_sind,
+  data = entrenamiento,
+  ntree = 100,
+  mtry = 5
+)
+
+prediccion = predict(bosque, pruebas)
+
+matriz = table(pruebas$est_conyugal, prediccion)
+
+pre <- sum(diag(matriz)) / sum(matriz)
+pre
+
+print(matriz)
+plot(bosque)
+
+
+
+
+```
+
+
+
+
+## Sexo sindicados
+```{r}
+
+sdSindicados23_ <- sdSindicados23
+
+sdSindicados23_ <- na.omit(sdSindicados23_)
+
+sdSindicados23_$delito_com <- factor(sdSindicados23_$delito_com)
+sdSindicados23_$depto_ocu_hecho <- factor(sdSindicados23_$depto_ocu_hecho)
+sdSindicados23_$sexo_per <- factor(sdSindicados23_$sexo_per)
+sdSindicados23_$est_conyugal <- factor(sdSindicados23_$est_conyugal)
+sdSindicados23_$principales_delitos <- factor(sdSindicados23_$principales_delitos)
+
+sdSindicados23_ <- sdSindicados23_ %>%
+  filter(edad_sind != -99 )
+
+
+# Desordenar los datos
+set.seed(31416)
+sdSindicados23_ <- sdSindicados23_[sample(1:nrow(sdSindicados23_)),]
+
+# Obtener listado de filas para usar como test para la separación
+filas_entrenamiento <- sample(1:nrow(sdSindicados23_),0.8*nrow(sdSindicados23_))
+
+# Separar conjunto
+entrenamiento <- sdSindicados23_[filas_entrenamiento,]
+pruebas <- sdSindicados23_[-filas_entrenamiento,]
+
+
+# Predicción de estado conyugal
+bosque <- randomForest(
+  sexo_per ~ 
+     principales_delitos + est_conyugal + depto_ocu_hecho,
+  data = entrenamiento,
+  ntree = 100,
+  mtry = 5
+)
+
+prediccion = predict(bosque, pruebas)
+
+matriz = table(pruebas$sexo_per, prediccion)
+
+pre <- sum(diag(matriz)) / sum(matriz)
+pre
+
+print(matriz)
+plot(bosque)
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
