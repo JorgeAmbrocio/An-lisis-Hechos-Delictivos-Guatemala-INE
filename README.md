@@ -5,15 +5,6 @@ output: html_notebook
 
 # Documentación ténica del proyecto análisis
 
-
-## Uso de librerías
-```{r}
-library(dplyr) # Para manejar y manipular datos con %>%
-library(arules) # Para uso de algoritmos
-library(readxl) # Para lectura de archivo en formato excel
-library(ggplot2) # Para graficar
-```
-
 ### Instalación de librería dplyr
 Para la instalación de esta librería se debe ir, en RStudio, a la barra de tareas opción Tools, allí se debe seleccionar la opción Instalación de paquetes y la ventana emergente en la sección Packages se debe introducir el nombre de la librería "dplyr", dar clic en instalar esperar a terminar la instalación.
 
@@ -24,6 +15,7 @@ La instalación de las demás librerías es mediante comando de script mediante 
 install.packages("arules")
 install.packages("readxl")
 install.packages("ggplot2")
+install.packages("randomForest")
 ```
 
 ## Para uso de algoritmos
@@ -38,6 +30,17 @@ Una vez instaladas las utilidades de R se debe ejecutar el comando siguiente par
 
 ```{cmd}
 R CMD INSTALL fim4r_1.8.tar.gz 
+```
+
+## Uso de librerías
+```{r}
+library(dplyr) # Para manejar y manipular datos con %>%
+library(arules) # Para uso de algoritmos
+library(readxl) # Para lectura de archivo en formato excel
+library(ggplot2) # Para graficar
+library(rpart) # para construcción del árbol
+library(rpart.plot) # para graficar el árbol
+library(randomForest) # Paracrear el árbol aleatorio
 ```
 
 ## Limpieza de datos
@@ -67,4 +70,23 @@ Los archivos se encuentran en formato para notebook de r studio, se encuentran e
 - Archivo para algoritmo apriori -> Algorithm Apriori - 2.Rmd
 - Archivo para algoritmo fpgrowth -> Algorithm FPGrowth.Rmd
 - Archivo para algoritmo kmeans -> Algorithm KMeans.Rmd
+- Archivo para algoritmo decision tree -> Algorithm Decision Tree.Rmd
+- Archivo para algoritmo random forest -> Algorithm Random Forest.Rmd
+- Archivo para artificial neural network -> Artificial_Neural_Network.ipynb
+
+## Ejecución 
+Durange la ejecución del algoritmo de redes neuronales es necesario previamente cargar los archivos de los conjuntos de datos sindicados y agraviados 2020 y sus respectivos diccionarios en google drive. 
+Para el ejericio presente se colocan los archivos en la siguiente ubicación dentro de la misma cuenta de google drive que se utilizará para abrir el archivo de google colab.
+
+```{R}
+# ruta en google drive en la que se ubican los archivos de datos
+ruta = "/content/drive/MyDrive/Colab Notebooks/DataSets/"
+
+ruta_sindicados = "/content/drive/MyDrive/Colab Notebooks/DataSets/Sindicados 2020.xlsx"
+
+ruta_agraviados = "/content/drive/MyDrive/Colab Notebooks/DataSets/Agraviados 2020.xlsx" 
+```
+
+## Google colab
+El archivo de redes neuronales se debe ejecutar mediante la herramienta online Google Colab, que podrá encontrar en el siguiente enlace [Google Colab](https://colab.research.google.com/). Dentro de esta vista se deberá dar clic sobre el apartado "Subir", para cargar el docuemento "Artificial_Neural_Network.ipynb". Al cargar el documento y contar con los archivos previamente mencionados en el google drive del mismo usuario, se podrá ejecutar en orden cada una de las celdas mediante el botón de ejecución ubicado a la izquierda de cada una de las celdas de código.
 

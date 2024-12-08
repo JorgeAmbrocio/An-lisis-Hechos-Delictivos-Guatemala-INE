@@ -191,7 +191,7 @@ rpart.plot(
 # nuevos datos
 dato_01 <- data.frame(
   delito_com = 12,
-  sexo_agraviados = 1,
+  sexo_agraviados = 2,
   edad_agrav = 22,
   depto_ocu_hecho = 1
 )
@@ -394,7 +394,7 @@ dtSindicados23 <- rpart(
 
 rpart.plot(
   dtSindicados23,  type = 2, extra = 0, under = TRUE, fallen.leaves = TRUE,
-  box.palette = "BuGn", main="Predicción de estado conyugal en función de la edad y el sexo del sindicado", cex = 0.5
+  box.palette = "BuGn", main="Predicción de tercera edad en función de la edad y el sexo del sindicado", cex = 0.5
 )
 
 ```
@@ -429,10 +429,10 @@ resultado
 
 # datos nuevos
 dato_01 <- data.frame(
-  delito_com = 90,
+  delito_com = 316,
   sexo_per = 2,
-  est_conyugal = "3",
-  depto_ocu_hecho = "1"
+  est_conyugal = "4",
+  depto_ocu_hecho = "12"
 )
 
 resultado <- predict(dtSindicados23, dato_01,type="class")
@@ -441,7 +441,7 @@ resultado
 
 # datos nuevos
 dato_01 <- data.frame(
-  delito_com = 350,
+  delito_com = 314,
   sexo_per = 2,
   est_conyugal = "4",
   depto_ocu_hecho = "21"
